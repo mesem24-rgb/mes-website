@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function GET() {
   return NextResponse.json({
     status: "MES inquiry API is working!",
@@ -11,6 +9,24 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
+    const apiKey = process.env.RESEND_API_KEY;
+    const toEmail = process.env.INQUIRY_TO_EMAIL;
+    const fromEmail = process.env.INQUIRY_FROM_EMAIL;
+
+    if (!apiKey || !toEmail || !fromEmail) {
+      console.error("Missing inquiry environment variables.");
+
+      return NextResponse.json(
+        {
+          message:
+            "The inquiry service is not configured. Please email mesem24@gmail.com directly.",
+        },
+        { status: 500 },
+      );
+    }
+
+    const resend = new Resend(apiKey);
+
     const body = await request.json();
 
     const {
@@ -23,8 +39,8 @@ export async function POST(request: Request) {
     } = body;
 
     const { error } = await resend.emails.send({
-      from: process.env.INQUIRY_FROM_EMAIL!,
-      to: process.env.INQUIRY_TO_EMAIL!,
+      from: fromEmail,
+      to: toEmail,
       replyTo: email,
       subject: `New MES Inquiry from ${name}`,
       html: `
@@ -32,26 +48,25 @@ export async function POST(request: Request) {
 
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Company:</strong> ${company}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Company:</strong> ${company || "Not provided"}</p>
+        <p><strong>Phone:</strong> ${phone || "Not provided"}</p>
         <p><strong>Project Type:</strong> ${projectType}</p>
 
-        <hr>
+        <hr />
 
         <p>${message}</p>
       `,
     });
 
     if (error) {
-      console.error(error);
+      console.error("Resend error:", error);
 
       return NextResponse.json(
         {
-          message: "Unable to send email.",
+          message:
+            "Unable to send your inquiry. Please email mesem24@gmail.com directly.",
         },
-        {
-          status: 500,
-        }
+        { status: 500 },
       );
     }
 
@@ -59,15 +74,13 @@ export async function POST(request: Request) {
       message: "Inquiry sent successfully.",
     });
   } catch (error) {
-    console.error(error);
+    console.error("Inquiry route error:", error);
 
     return NextResponse.json(
       {
         message: "Server error.",
       },
-      {
-        status: 500,
-      }
+      { status: 500 },
     );
   }
 }
