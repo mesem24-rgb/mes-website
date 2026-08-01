@@ -1,0 +1,672 @@
+@import "tailwindcss";
+
+/* =========================================================
+   MES DESIGN SYSTEM
+   ========================================================= */
+
+:root {
+  /* ---------- Brand colors ---------- */
+
+  --mes-background: #070b12;
+  --mes-background-soft: #090e17;
+
+  --mes-surface: rgba(12, 18, 30, 0.82);
+  --mes-surface-solid: #0c121e;
+  --mes-surface-elevated: #111a29;
+  --mes-surface-hover: #151f30;
+
+  --mes-border: rgba(255, 255, 255, 0.08);
+  --mes-border-soft: rgba(255, 255, 255, 0.055);
+  --mes-border-hover: rgba(255, 255, 255, 0.15);
+  --mes-border-accent: rgba(96, 165, 250, 0.3);
+
+  --mes-text-primary: rgba(255, 255, 255, 0.98);
+  --mes-text-secondary: rgba(255, 255, 255, 0.72);
+  --mes-text-muted: rgba(255, 255, 255, 0.48);
+  --mes-text-subtle: rgba(255, 255, 255, 0.26);
+
+  --mes-accent: #60a5fa;
+  --mes-accent-strong: #3b82f6;
+  --mes-accent-soft: rgba(59, 130, 246, 0.12);
+  --mes-accent-muted: rgba(59, 130, 246, 0.07);
+  --mes-accent-glow: rgba(59, 130, 246, 0.25);
+
+  /* ---------- Layout ---------- */
+
+  --mes-container-width: 88rem;
+  --mes-container-padding: clamp(1.25rem, 4vw, 4rem);
+
+  --mes-section-space: clamp(7rem, 11vw, 12.5rem);
+  --mes-section-space-compact: clamp(5.5rem, 8vw, 9rem);
+
+  --mes-content-gap: clamp(3rem, 6vw, 6rem);
+  --mes-block-gap: clamp(2rem, 4vw, 4rem);
+
+  /* ---------- Radius ---------- */
+
+  --mes-radius-sm: 1rem;
+  --mes-radius-md: 1.375rem;
+  --mes-radius-lg: 1.875rem;
+  --mes-radius-xl: 2.25rem;
+  --mes-radius-pill: 999px;
+
+  /* ---------- Motion ---------- */
+
+  --mes-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --mes-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --mes-duration-fast: 180ms;
+  --mes-duration-normal: 350ms;
+  --mes-duration-slow: 650ms;
+
+  /* ---------- Shadows ---------- */
+
+  --mes-shadow-soft:
+    inset 0 1px 0 rgba(255, 255, 255, 0.035),
+    0 18px 60px rgba(0, 0, 0, 0.24);
+
+  --mes-shadow-card:
+    inset 0 1px 0 rgba(255, 255, 255, 0.045),
+    0 24px 80px rgba(0, 0, 0, 0.32),
+    0 0 100px rgba(59, 130, 246, 0.025);
+
+  --mes-shadow-elevated:
+    inset 0 1px 0 rgba(255, 255, 255, 0.055),
+    0 36px 120px rgba(0, 0, 0, 0.42),
+    0 0 140px rgba(59, 130, 246, 0.05);
+}
+
+/* =========================================================
+   DOCUMENT FOUNDATION
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--mes-background);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  background:
+    radial-gradient(
+      circle at 50% -10%,
+      rgba(59, 130, 246, 0.08),
+      transparent 34rem
+    ),
+    linear-gradient(
+      180deg,
+      var(--mes-background-soft) 0%,
+      var(--mes-background) 32%,
+      var(--mes-background) 100%
+    );
+  color: var(--mes-text-primary);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body,
+button,
+a,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg,
+canvas {
+  display: block;
+}
+
+::selection {
+  background: rgba(96, 165, 250, 0.28);
+  color: white;
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+:focus-visible {
+  outline: 2px solid var(--mes-accent);
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 9999;
+  transform: translateY(-200%);
+  border-radius: var(--mes-radius-pill);
+  background: white;
+  padding: 0.75rem 1rem;
+  color: #070b12;
+  font-size: 0.875rem;
+  font-weight: 700;
+  transition: transform var(--mes-duration-normal) var(--mes-ease);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   LAYOUT UTILITIES
+   ========================================================= */
+
+.mes-container {
+  width: min(
+    calc(100% - (var(--mes-container-padding) * 2)),
+    var(--mes-container-width)
+  );
+  margin-inline: auto;
+}
+
+.mes-section {
+  position: relative;
+  scroll-margin-top: 6rem;
+  @apply py-24 sm:py-32 lg:py-40;
+}
+
+.mes-section-compact {
+  position: relative;
+  padding-block: var(--mes-section-space-compact);
+  scroll-margin-top: 6rem;
+}
+
+.mes-section-divider {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--mes-border),
+    transparent
+  );
+}
+
+.mes-content-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mes-content-gap);
+}
+
+.mes-block-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mes-block-gap);
+}
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+.mes-display {
+  max-width: 14ch;
+  margin: 0;
+  color: var(--mes-text-primary);
+  font-size: clamp(3.75rem, 9vw, 8.5rem);
+  font-weight: 600;
+  line-height: 0.88;
+  letter-spacing: -0.065em;
+  text-wrap: balance;
+}
+
+.mes-section-title {
+  max-width: 14ch;
+  margin: 0;
+  color: var(--mes-text-primary);
+  font-size: clamp(3rem, 6vw, 6.5rem);
+  font-weight: 600;
+  line-height: 0.94;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.mes-heading {
+  margin: 0;
+  color: var(--mes-text-primary);
+  font-size: clamp(2rem, 4vw, 3.75rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.mes-card-title {
+  margin: 0;
+  color: var(--mes-text-primary);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.mes-body-large {
+  max-width: 42rem;
+  margin: 0;
+  color: var(--mes-text-secondary);
+  font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+  line-height: 1.7;
+}
+
+.mes-body {
+  margin: 0;
+  color: var(--mes-text-muted);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.mes-eyebrow {
+  margin: 0;
+  color: var(--mes-text-secondary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.mes-accent-text {
+  color: var(--mes-accent);
+}
+
+.mes-text-primary {
+  color: var(--mes-text-primary);
+}
+
+.mes-text-secondary {
+  color: var(--mes-text-secondary);
+}
+
+.mes-text-muted {
+  color: var(--mes-text-muted);
+}
+
+.mes-text-subtle {
+  color: var(--mes-text-subtle);
+}
+
+/* =========================================================
+   SURFACES AND CARDS
+   ========================================================= */
+
+.mes-surface {
+  border: 1px solid var(--mes-border);
+  border-radius: var(--mes-radius-lg);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.025),
+      transparent 38%
+    ),
+    var(--mes-surface);
+  box-shadow: var(--mes-shadow-soft);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.mes-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--mes-border);
+  border-radius: var(--mes-radius-lg);
+  background:
+    radial-gradient(
+      circle at 85% 8%,
+      rgba(59, 130, 246, 0.07),
+      transparent 30%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.03),
+      transparent 42%
+    ),
+    var(--mes-surface);
+  box-shadow: var(--mes-shadow-card);
+  transition:
+    transform var(--mes-duration-normal) var(--mes-ease),
+    border-color var(--mes-duration-normal) var(--mes-ease),
+    background-color var(--mes-duration-normal) var(--mes-ease),
+    box-shadow var(--mes-duration-slow) var(--mes-ease);
+}
+
+.mes-card::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0.05),
+    transparent 22%,
+    transparent 72%,
+    rgba(96, 165, 250, 0.025)
+  );
+  opacity: 0.55;
+}
+
+.mes-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--mes-border-hover);
+  background-color: var(--mes-surface-elevated);
+  box-shadow: var(--mes-shadow-elevated);
+}
+
+.mes-card-static {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--mes-border);
+  border-radius: var(--mes-radius-lg);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.025),
+      transparent 40%
+    ),
+    var(--mes-surface);
+  box-shadow: var(--mes-shadow-card);
+}
+
+/* =========================================================
+   BUTTON FOUNDATION
+   ========================================================= */
+
+.mes-button {
+  display: inline-flex;
+  min-height: 3rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  border: 1px solid transparent;
+  border-radius: var(--mes-radius-pill);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition:
+    transform var(--mes-duration-normal) var(--mes-ease),
+    border-color var(--mes-duration-normal) var(--mes-ease),
+    background-color var(--mes-duration-normal) var(--mes-ease),
+    color var(--mes-duration-normal) var(--mes-ease),
+    box-shadow var(--mes-duration-normal) var(--mes-ease);
+}
+
+.mes-button:hover {
+  transform: translateY(-2px);
+}
+
+.mes-button-primary {
+  background: var(--mes-accent-strong);
+  color: white;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 12px 35px rgba(37, 99, 235, 0.22);
+}
+
+.mes-button-primary:hover {
+  background: #4f8ff7;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 16px 44px rgba(37, 99, 235, 0.32);
+}
+
+.mes-button-secondary {
+  border-color: var(--mes-border);
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--mes-text-secondary);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025);
+}
+
+.mes-button-secondary:hover {
+  border-color: var(--mes-border-hover);
+  background: rgba(255, 255, 255, 0.065);
+  color: var(--mes-text-primary);
+}
+
+.mes-button-ghost {
+  color: var(--mes-text-muted);
+}
+
+.mes-button-ghost:hover {
+  color: var(--mes-text-primary);
+}
+
+/* =========================================================
+   SMALL COMPONENT UTILITIES
+   ========================================================= */
+
+.mes-icon-surface {
+  height: 2.75rem;
+  width: 2.75rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--mes-border);
+  border-radius: var(--mes-radius-pill);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--mes-text-muted);
+  transition:
+    border-color var(--mes-duration-normal) var(--mes-ease),
+    background-color var(--mes-duration-normal) var(--mes-ease),
+    color var(--mes-duration-normal) var(--mes-ease),
+    transform var(--mes-duration-normal) var(--mes-ease);
+}
+
+.group:hover .mes-icon-surface,
+.mes-icon-surface:hover {
+  transform: translateY(-1px);
+  border-color: var(--mes-border-accent);
+  background: var(--mes-accent-soft);
+  color: #bfdbfe;
+}
+
+.mes-divider {
+  height: 1px;
+  width: 100%;
+  background: var(--mes-border);
+}
+
+.mes-accent-dot {
+  height: 0.375rem;
+  width: 0.375rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--mes-accent);
+  box-shadow: 0 0 14px rgba(96, 165, 250, 0.8);
+}
+
+.mes-glass {
+  border: 1px solid var(--mes-border);
+  background: rgba(7, 11, 18, 0.74);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+/* =========================================================
+   ATMOSPHERIC LIGHTING
+   ========================================================= */
+
+.mes-glow {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(120px);
+}
+
+.mes-glow-center {
+  left: 50%;
+  width: min(48rem, 80vw);
+  height: 32rem;
+  transform: translateX(-50%);
+  background: rgba(59, 130, 246, 0.09);
+}
+
+.mes-glow-left {
+  left: -16rem;
+  width: 34rem;
+  height: 34rem;
+  background: rgba(59, 130, 246, 0.065);
+}
+
+.mes-glow-right {
+  right: -18rem;
+  width: 36rem;
+  height: 36rem;
+  background: rgba(59, 130, 246, 0.065);
+}
+
+/* =========================================================
+   SCROLL REVEALS
+   ========================================================= */
+
+@keyframes mes-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+    filter: blur(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .mes-reveal {
+    animation: mes-reveal 900ms var(--mes-ease) both;
+    animation-timeline: view();
+    animation-range: entry 8% cover 32%;
+  }
+}
+
+@supports not (animation-timeline: view()) {
+  .mes-reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+* {
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: var(--mes-radius-pill);
+  background: rgba(255, 255, 255, 0.17);
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+  background-clip: padding-box;
+}
+
+/* =========================================================
+   RESPONSIVE REFINEMENTS
+   ========================================================= */
+
+@media (max-width: 767px) {
+  :root {
+    --mes-container-padding: 1.25rem;
+    --mes-section-space: 6.5rem;
+    --mes-section-space-compact: 5rem;
+  }
+
+  .mes-display {
+    font-size: clamp(3.25rem, 16vw, 5rem);
+    line-height: 0.91;
+  }
+
+  .mes-section-title {
+    font-size: clamp(2.75rem, 13vw, 4.5rem);
+    line-height: 0.96;
+  }
+
+  .mes-card:hover {
+    transform: none;
+  }
+}
+
+@media (max-height: 760px) and (min-width: 768px) {
+  :root {
+    --mes-section-space: clamp(6rem, 9vw, 9rem);
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .mes-reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .mes-card:hover,
+  .mes-button:hover,
+  .mes-icon-surface:hover {
+    transform: none;
+  }
+}
