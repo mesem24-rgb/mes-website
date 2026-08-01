@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "MES helps businesses improve workflows, clarify technology needs, and build thoughtful websites, internal tools, and custom software.",
+    "MES helps businesses improve workflows, clarify technology needs, and build thoughtful websites.",
 
   applicationName: "MES",
 
@@ -61,10 +61,7 @@ export const metadata: Metadata = {
     follow: true,
   },
 
-  icons: {
-  icon: "/favicon.ico",
-  apple: "/icons/apple-touch-icon.png",
-},
+
 };
 
 export default function RootLayout({
