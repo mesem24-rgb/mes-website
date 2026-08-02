@@ -19,8 +19,7 @@ const projects: FeaturedProject[] = [
   {
     name: "ConstructFlow",
     category: "Construction Management Platform",
-    headline:
-      "Bringing modern project management to construction teams.",
+    headline: "Bringing modern project management to construction teams.",
     challenge:
       "Construction teams often rely on disconnected tools, spreadsheets, and emails to manage projects, making it difficult to track progress, communicate effectively, and maintain visibility.",
     solution:
@@ -47,8 +46,7 @@ const projects: FeaturedProject[] = [
   {
     name: "Compass CRM",
     category: "Recruiting Operations Platform",
-    headline:
-      "Simplifying recruiter workflows and client collaboration.",
+    headline: "Simplifying recruiter workflows and client collaboration.",
     challenge:
       "Recruiting teams often rely on spreadsheets, emails, and disconnected tools to manage candidates, job orders, and client relationships, making it difficult to track progress and maintain visibility.",
     solution:
@@ -73,10 +71,37 @@ const projects: FeaturedProject[] = [
     ],
   },
   {
+    name: "Elite Ball Co.",
+    category: "Reclaimed Golf Ball Retail Brand",
+    headline:
+      "Creating a trustworthy digital presence for quality reclaimed golf balls.",
+    challenge:
+      "Elite Ball Co. needed an introductory website that could explain the value of reclaimed golf balls, establish trust in product quality, and give golfers a clear way to understand the brand and its offering.",
+    solution:
+      "The website presents Elite Ball Co. as a clean, dependable golf brand through focused messaging, product-oriented visuals, responsive design, and clear calls to action built to support future ecommerce growth.",
+    image: "/images/products/elite-ball-co.png",
+    imageAlt: "Elite Ball Co. reclaimed golf ball retail website",
+    href: "YOUR_REAL_LIVE_URL",
+    cta: "Visit the website",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Responsive design",
+      "Vercel",
+    ],
+    capabilities: [
+      "Brand introduction",
+      "Product education",
+      "Golf ball showcase",
+      "Mobile experience",
+      "Ecommerce foundation",
+    ],
+  },
+  {
     name: "MES",
     category: "Brand and Digital Experience",
-    headline:
-      "Built to demonstrate the philosophy behind the work.",
+    headline: "Built to demonstrate the philosophy behind the work.",
     challenge:
       "MES needed more than a standard marketing page. The experience had to communicate a thoughtful approach to software while giving potential clients a clear and comfortable path to begin a conversation.",
     solution:
@@ -102,13 +127,7 @@ const projects: FeaturedProject[] = [
   },
 ];
 
-function DetailList({
-  label,
-  items,
-}: {
-  label: string;
-  items: string[];
-}) {
+function DetailList({ label, items }: { label: string; items: string[] }) {
   return (
     <div>
       <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-white/30">
@@ -134,13 +153,7 @@ function DetailList({
   );
 }
 
-function StoryBlock({
-  label,
-  children,
-}: {
-  label: string;
-  children: string;
-}) {
+function StoryBlock({ label, children }: { label: string; children: string }) {
   return (
     <div className="border-l border-white/[0.09] pl-5">
       <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-blue-300/65">
@@ -154,11 +167,7 @@ function StoryBlock({
   );
 }
 
-function ProjectVisual({
-  project,
-}: {
-  project: FeaturedProject;
-}) {
+function ProjectVisual({ project }: { project: FeaturedProject }) {
   const isExternal = project.href.startsWith("http");
 
   return (
@@ -242,25 +251,15 @@ function ProjectDetails({
       </p>
 
       <div className="mt-9 space-y-8">
-        <StoryBlock label="The challenge">
-          {project.challenge}
-        </StoryBlock>
+        <StoryBlock label="The challenge">{project.challenge}</StoryBlock>
 
-        <StoryBlock label="The solution">
-          {project.solution}
-        </StoryBlock>
+        <StoryBlock label="The solution">{project.solution}</StoryBlock>
       </div>
 
       <div className="mt-10 grid gap-10 border-t border-white/[0.08] pt-8 sm:grid-cols-2">
-        <DetailList
-          label="Core modules"
-          items={project.capabilities}
-        />
+        <DetailList label="Core modules" items={project.capabilities} />
 
-        <DetailList
-          label="Built with"
-          items={project.technologies}
-        />
+        <DetailList label="Built with" items={project.technologies} />
       </div>
 
       <a
@@ -326,34 +325,27 @@ export function FeaturedWork() {
 
             return (
               <article
-  key={project.name}
-  className={[
-    "grid gap-14 border-b border-white/[0.08] py-16 sm:py-20 lg:items-start lg:gap-20 lg:py-20",
-    imageFirst
-      ? "lg:grid-cols-[1.2fr_0.8fr]"
-      : "lg:grid-cols-[0.8fr_1.2fr]",
-  ].join(" ")}
->
-  <div
-    className={[
-      "lg:pt-1",
-      imageFirst ? "lg:order-1" : "lg:order-2",
-    ].join(" ")}
-  >
-    <ProjectVisual project={project} />
-  </div>
+                key={project.name}
+                className={[
+                  "grid gap-14 border-b border-white/[0.08] py-16 sm:py-20 lg:items-start lg:gap-20 lg:py-20",
+                  imageFirst
+                    ? "lg:grid-cols-[1.2fr_0.8fr]"
+                    : "lg:grid-cols-[0.8fr_1.2fr]",
+                ].join(" ")}
+              >
+                <div
+                  className={[
+                    "lg:pt-1",
+                    imageFirst ? "lg:order-1" : "lg:order-2",
+                  ].join(" ")}
+                >
+                  <ProjectVisual project={project} />
+                </div>
 
-  <div
-    className={
-      imageFirst ? "lg:order-2" : "lg:order-1"
-    }
-  >
-    <ProjectDetails
-      project={project}
-      index={index}
-    />
-  </div>
-</article>
+                <div className={imageFirst ? "lg:order-2" : "lg:order-1"}>
+                  <ProjectDetails project={project} index={index} />
+                </div>
+              </article>
             );
           })}
         </div>
