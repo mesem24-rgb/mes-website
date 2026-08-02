@@ -79,9 +79,9 @@ const projects: FeaturedProject[] = [
       "Elite Ball Co. needed an introductory website that could explain the value of reclaimed golf balls, establish trust in product quality, and give golfers a clear way to understand the brand and its offering.",
     solution:
       "The website presents Elite Ball Co. as a clean, dependable golf brand through focused messaging, product-oriented visuals, responsive design, and clear calls to action built to support future ecommerce growth.",
-    image: "/images/products/elite-ball-co.png",
+    image: "/images/products/elite-ball-co.jpg",
     imageAlt: "Elite Ball Co. reclaimed golf ball retail website",
-    href: "YOUR_REAL_LIVE_URL",
+    href: "https://elite-ball-co.vercel.app/",
     cta: "Visit the website",
     technologies: [
       "Next.js",
@@ -266,7 +266,7 @@ function ProjectDetails({
         href={project.href}
         target={isExternal ? "_blank" : undefined}
         rel={isExternal ? "noreferrer" : undefined}
-        className="group mt-10 inline-flex w-fit items-center gap-3 border-b border-white/15 pb-1.5 text-sm font-semibold text-white/65 transition-all duration-300 hover:border-blue-400/60 hover:text-white"
+        className="group mt-10 inline-flex w-fit items-center gap-3 border-b border-white/15 pb-1.5 text-sm font-semibold text-white/65 transition-all duration-300 hover:border-blue-400/20 hover:text-white"
       >
         {project.cta}
 

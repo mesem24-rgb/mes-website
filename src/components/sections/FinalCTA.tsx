@@ -48,7 +48,7 @@ export function FinalCTA() {
                 href="mailto:mesem24@gmail.com?subject=MES%20Project%20Inquiry"
                 className="group flex items-center gap-4 text-sm text-white/50 transition-all duration-300 hover:text-white"
               >
-                <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 transition-colors duration-300 group-hover:border-blue-400/60 group-hover:bg-blue-500/10">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 transition-colors duration-300 group-hover:border-blue-400/20 group-hover:bg-blue-500/10">
                   <Mail className="h-4 w-4" />
                 </span>
 
@@ -59,7 +59,7 @@ export function FinalCTA() {
                 href="tel:+12282092005"
                 className="group flex items-center gap-4 text-sm text-white/50 transition-all duration-300 hover:text-white"
               >
-                <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 transition-colors duration-300 group-hover:border-blue-400/60 group-hover:bg-blue-500/10">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 transition-colors duration-300 group-hover:border-blue-400/20 group-hover:bg-blue-500/10">
                   <Phone className="h-4 w-4" />
                 </span>
 

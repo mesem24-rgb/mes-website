@@ -109,7 +109,7 @@ export function ProcessSection() {
                     {step.description}
                   </p>
 
-                  <div className="mt-10 border-l border-white/10 pl-4 transition-colors duration-500 group-hover:border-blue-400/60">
+                  <div className="mt-10 border-l border-white/10 pl-4 transition-colors duration-500 group-hover:border-blue-400/20">
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/24">
                       Outcome
                     </p>

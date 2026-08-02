@@ -143,7 +143,7 @@ export function Footer() {
 
             <Link
               href="#contact"
-              className="group mt-8 inline-flex items-center gap-3 border-b border-white/15 pb-1.5 text-sm font-semibold text-white/65 transition-all duration-300 hover:border-blue-400/60 hover:text-white"
+              className="group mt-8 inline-flex items-center gap-3 border-b border-white/15 pb-1.5 text-sm font-semibold text-white/65 transition-all duration-300 hover:border-blue-400/20 hover:text-white"
             >
               Start a conversation
 
