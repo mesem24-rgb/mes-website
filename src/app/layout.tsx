@@ -3,9 +3,41 @@ import type { ReactNode } from "react";
 
 import "./globals.css";
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "MES",
+  alternateName: "Meaningful Empowering Solutions",
+  url: "https://www.mes-solutions.dev",
+  email: "contact@mes-solutions.dev",
+  founder: {
+    "@type": "Person",
+    name: "Michael Sullivan",
+  },
+  areaServed: [
+    {
+      "@type": "City",
+      name: "Gulfport",
+    },
+    {
+      "@type": "AdministrativeArea",
+      name: "Mississippi Gulf Coast",
+    },
+  ],
+  description:
+    "MES builds custom websites, workflow applications, and practical software solutions for businesses.",
+  knowsAbout: [
+    "Custom website development",
+    "Workflow applications",
+    "Business process improvement",
+    "Internal business tools",
+    "Software consulting",
+  ],
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.mes-solutions.dev"),
-  
+
   title: {
     default: "MES | Custom Websites & Workflow Software",
     template: "%s | MES",
@@ -69,8 +101,6 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-
-
 };
 
 export default function RootLayout({
@@ -79,8 +109,16 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  );
+  <html lang="en">
+    <body>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(organizationSchema),
+        }}
+      />
+      {children}
+    </body>
+  </html>
+);
 }
