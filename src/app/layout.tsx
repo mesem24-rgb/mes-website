@@ -5,13 +5,14 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.mes-solutions.dev"),
+  
   title: {
-    default: "MES | Software Built Around Your Business",
+    default: "MES | Custom Websites & Workflow Software",
     template: "%s | MES",
   },
 
   description:
-    "MES helps businesses improve workflows, clarify technology needs, and build thoughtful websites.",
+    "MES builds custom websites, workflow applications, and practical software solutions for businesses in Gulfport and across the Mississippi Gulf Coast.",
 
   applicationName: "MES",
 
@@ -26,15 +27,22 @@ export const metadata: Metadata = {
   keywords: [
     "custom software development",
     "business websites",
+    "workflow applications",
     "workflow automation",
     "internal business tools",
     "software consulting",
-    "Gulfport Mississippi software developer",
+    "Gulfport Mississippi web developer",
+    "Mississippi Gulf Coast web design",
   ],
+
+  alternates: {
+    canonical: "/",
+  },
 
   openGraph: {
     type: "website",
     locale: "en_US",
+    url: "/",
     siteName: "MES",
     title: "MES | Software Built Around Your Business",
     description:
