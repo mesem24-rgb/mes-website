@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://YOURDOMAIN.com/sitemap.xml",
+    sitemap: "https://www.mes-solutions.dev/sitemap.xml",
   };
 }

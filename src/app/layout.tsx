@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.mes-solutions.dev"),
   title: {
     default: "MES | Software Built Around Your Business",
     template: "%s | MES",
