@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, Share2, X } from "lucide-react";
 
 const navigationItems = [
   {
@@ -67,6 +67,30 @@ export function Navbar() {
       return;
     }
 
+    const handleShare = async () => {
+      const shareData = {
+        title: "MES | Software Built Around Your Business",
+        text: "Thoughtful software built around the way your business works.",
+        url: window.location.origin,
+      };
+
+      try {
+        if (navigator.share) {
+          await navigator.share(shareData);
+          return;
+        }
+
+        await navigator.clipboard.writeText(shareData.url);
+        window.alert("Website link copied.");
+      } catch (error) {
+        if (error instanceof DOMException && error.name === "AbortError") {
+          return;
+        }
+
+        console.error("Unable to share the website:", error);
+      }
+    };
+
     const observer = new IntersectionObserver(
       (entries) => {
         const visibleEntries = entries
@@ -123,14 +147,43 @@ export function Navbar() {
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
+const handleShare = async () => {
+  const shareData = {
+    title: "MES | Software Built Around Your Business",
+    text: "Thoughtful software built around the way your business works.",
+    url: window.location.href,
+  };
+
+  try {
+    if (navigator.share) {
+      await navigator.share(shareData);
+      return;
+    }
+
+    await navigator.clipboard.writeText(shareData.url);
+    window.alert("Website link copied.");
+  } catch (error) {
+    if (
+      error instanceof DOMException &&
+      error.name === "AbortError"
+    ) {
+      return;
+    }
+
+    console.error("Unable to share the website:", error);
+    window.alert("Unable to share the website.");
+  }
+};
 
   return (
     <header
       className={[
-        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
-        isScrolled
-          ? "border-b border-white/[0.07] bg-[#070b12]/78 shadow-[0_14px_50px_rgba(0,0,0,0.22)] backdrop-blur-2xl"
-          : "border-b border-transparent bg-transparent",
+        "fixed inset-x-0 top-0 z-50 overflow-visible transition-all duration-500",
+        isMenuOpen
+          ? "border-b border-white/[0.07] bg-[#070b12]"
+          : isScrolled
+            ? "border-b border-white/[0.07] bg-[#070b12]/78 shadow-[0_14px_50px_rgba(0,0,0,0.22)] backdrop-blur-2xl"
+            : "border-b border-transparent bg-transparent",
       ].join(" ")}
     >
       <div className="mes-container">
@@ -339,6 +392,18 @@ lg:hidden
                 className="h-5 w-5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
               />
             </Link>
+
+            <button
+              type="button"
+              onClick={handleShare}
+              className="group mt-3 flex w-full items-center justify-between rounded-full border border-white/10 bg-white/[0.03] px-6 py-4 text-sm font-semibold text-white/65 transition-all duration-300 hover:border-blue-400/40 hover:bg-blue-500/10 hover:text-white"
+            >
+              Share this website
+              <Share2
+                aria-hidden="true"
+                className="h-4 w-4 text-white/35 transition-colors duration-300 group-hover:text-blue-300"
+              />
+            </button>
 
             <div className="mt-8 grid grid-cols-3 border-t border-white/[0.08] pt-6 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-white/25">
               <span>Meaningful</span>
