@@ -127,10 +127,10 @@ export function Footer() {
 
             <div className="mt-6 space-y-4">
               <a
-                href="mailto:mesem24@gmail.com"
+                href="mailto:contact@mes-solutions.dev"
                 className="block text-sm text-white/48 transition-colors duration-300 hover:text-white"
               >
-                mesem24@gmail.com
+                contact@mes-solutions.dev
               </a>
 
               <a

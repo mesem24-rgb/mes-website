@@ -45,14 +45,14 @@ export function FinalCTA() {
                 Prefer to reach out directly?
               </h3>
               <a
-                href="mailto:mesem24@gmail.com?subject=MES%20Project%20Inquiry"
+                href="mailto:contact@mes-solutions.dev?subject=MES%20Project%20Inquiry"
                 className="group flex items-center gap-4 text-sm text-white/50 transition-all duration-300 hover:text-white"
               >
                 <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 transition-colors duration-300 group-hover:border-blue-400/20 group-hover:bg-blue-500/10">
                   <Mail className="h-4 w-4" />
                 </span>
 
-                <span>mesem24@gmail.com</span>
+                <span>contact@mes-solutions.dev</span>
               </a>
 
               <a
