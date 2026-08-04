@@ -64,9 +64,10 @@ lg:text-[6.5rem] font-semibold leading-[0.9] tracking-[-0.065em] text-white"
 
           <div className="mt-10 grid max-w-5xl gap-8 lg:grid-cols-[minmax(0,34rem)_auto] lg:items-end lg:gap-8">
             <p className="mes-body-large">
-              Every business has its own way of working. We help shape software
-              around the people, processes, and decisions that make yours
-              unique.
+              MES designs custom websites and workflow software for small and
+              growing businesses. Based in Gulfport and serving the Mississippi
+              Gulf Coast, we shape every solution around the people, processes,
+              and decisions that make your business unique.
             </p>
 
             <div className="flex flex-col items-start gap-4 sm:flex-row lg:justify-self-start">

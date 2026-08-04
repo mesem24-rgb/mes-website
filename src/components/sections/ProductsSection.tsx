@@ -3,6 +3,7 @@ import {
   ArrowUpRight,
   BriefcaseBusiness,
   LayoutDashboard,
+  PanelsTopLeft,
   Workflow,
 } from "lucide-react";
 
@@ -17,6 +18,18 @@ type ProductArea = {
 const productAreas: ProductArea[] = [
   {
     number: "01",
+    title: "Business websites",
+    description:
+      "Thoughtful, responsive websites that clearly communicate what your business offers and give customers an easier way to take the next step.",
+    examples: [
+      "Small-business websites",
+      "Service and marketing websites",
+      "Website redesigns and improvements",
+    ],
+    icon: PanelsTopLeft,
+  },
+  {
+    number: "02",
     title: "Operational platforms",
     description:
       "Custom systems that organize the daily work of the business and give teams a clearer way to manage what matters.",
@@ -28,7 +41,7 @@ const productAreas: ProductArea[] = [
     icon: LayoutDashboard,
   },
   {
-    number: "02",
+    number: "03",
     title: "Client and team portals",
     description:
       "Focused digital environments that make communication, collaboration, and access to information easier for everyone involved.",
@@ -40,7 +53,7 @@ const productAreas: ProductArea[] = [
     icon: BriefcaseBusiness,
   },
   {
-    number: "03",
+    number: "04",
     title: "Workflow automation",
     description:
       "Connected tools that remove repetitive work, reduce handoffs, and create a more dependable flow of information.",
@@ -76,17 +89,18 @@ export function ProductsSection() {
 
             <h2
               id="products-heading"
-              className="mt-6 max-w-[10ch] text-[clamp(2.75rem,6vw,5.75rem)] font-semibold leading-[0.94] tracking-[-0.065em] text-white"
+              className="mt-6 max-w-[14ch] text-[clamp(2.75rem,6vw,5.75rem)] font-semibold leading-[0.94] tracking-[-0.065em] text-white"
             >
-              Tools shaped around the work.
+              Websites and tools shaped around the work.
             </h2>
           </div>
 
           <div className="max-w-xl lg:justify-self-end lg:pb-2">
             <p className="mes-body-large">
-              MES creates focused software for the places where off-the-shelf
-              tools no longer fit, where processes have become fragmented, or
-              where a better experience can create meaningful business value.
+              MES creates custom websites, internal business systems, and
+              workflow applications for the places where generic tools no longer
+              fit—or where a better digital experience can create meaningful
+              business value.
             </p>
           </div>
         </div>
@@ -175,7 +189,6 @@ export function ProductsSection() {
               className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-white/60 transition-colors duration-300 hover:text-white"
             >
               Discuss a product idea
-
               <ArrowUpRight
                 aria-hidden="true"
                 className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"

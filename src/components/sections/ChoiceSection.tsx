@@ -96,9 +96,10 @@ export function ChoiceSection({
 
           <div className="max-w-xl lg:justify-self-end lg:pb-2">
             <p className="mes-body-large">
-              Some organizations need a new product. Others need to improve a
-              system they already depend on. Sometimes the most valuable first
-              step is simply determining what should happen next.
+              Some businesses need a new website or custom application. Others
+              need to improve a system they already depend on. Sometimes the
+              most valuable first step is determining which solution will create
+              the most meaningful progress.
             </p>
           </div>
         </div>
@@ -230,14 +231,11 @@ export function ChoiceSection({
                       className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-white/65 transition-colors duration-300 hover:text-white focus-visible:text-white"
                     >
                       Explore this path
-
                       <ArrowUpRight
                         aria-hidden="true"
                         className={[
                           "h-4 w-4 transition-transform duration-300",
-                          isActive
-                            ? "-translate-y-0.5 translate-x-0.5"
-                            : "",
+                          isActive ? "-translate-y-0.5 translate-x-0.5" : "",
                         ].join(" ")}
                       />
                     </Link>
@@ -260,7 +258,6 @@ export function ChoiceSection({
             className="group inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-white/60 transition-colors duration-300 hover:text-white"
           >
             How MES approaches the work
-
             <ArrowUpRight
               aria-hidden="true"
               className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
