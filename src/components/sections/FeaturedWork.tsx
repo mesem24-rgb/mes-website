@@ -284,7 +284,7 @@ export function FeaturedWork() {
     <section
       id="featured-work"
       aria-labelledby="featured-work-heading"
-      className="mes-section relative overflow-hidden"
+      className="mes-section relative scroll-mt-24 overflow-hidden"
     >
       <div
         aria-hidden="true"
