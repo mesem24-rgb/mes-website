@@ -1,5 +1,5 @@
-import { ArrowDown, ArrowRight } from "lucide-react";
-
+import { ArrowDown, ArrowRight, Link } from "lucide-react";
+import { trackClarityEvent } from "@/lib/clarity";
 import { Button } from "@/components/ui/Button";
 
 export function Hero() {
@@ -71,13 +71,13 @@ lg:text-[6.5rem] font-semibold leading-[0.9] tracking-[-0.065em] text-white"
             </p>
 
             <div className="flex flex-col items-start gap-4 sm:flex-row lg:justify-self-start">
-              <Button href="#journey">
+              <Link
+                href="#journey"
+                onClick={() => trackClarityEvent("hero_cta_clicked")}
+                className="mes-button mes-button-primary"
+              >
                 Tell us how you work
-                <ArrowRight
-                  aria-hidden="true"
-                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
-                />
-              </Button>
+              </Link>
 
               <Button href="#approach" variant="secondary">
                 Explore our approach

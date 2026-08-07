@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { ArrowUpRight, CheckCircle2, LoaderCircle } from "lucide-react";
+import { trackClarityEvent } from "@/lib/clarity";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -70,6 +71,8 @@ export function InquiryForm() {
             "Your inquiry could not be submitted.",
         );
       }
+
+      trackClarityEvent("inquiry_submitted");
 
       setStatus("success");
       setFormData(initialFormData);

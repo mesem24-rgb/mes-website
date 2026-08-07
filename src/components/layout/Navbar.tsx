@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Menu, Share2, X } from "lucide-react";
+import { trackClarityEvent } from "@/lib/clarity";
 
 const navigationItems = [
   {
@@ -42,6 +43,7 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
 
+  // Track navbar scroll state
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 24);
@@ -58,6 +60,7 @@ export function Navbar() {
     };
   }, []);
 
+  // Track active section
   useEffect(() => {
     const sections = navigationItems
       .map((item) => document.getElementById(item.sectionId))
@@ -66,30 +69,6 @@ export function Navbar() {
     if (sections.length === 0) {
       return;
     }
-
-    const handleShare = async () => {
-      const shareData = {
-        title: "MES | Software Built Around Your Business",
-        text: "Thoughtful software built around the way your business works.",
-        url: window.location.origin,
-      };
-
-      try {
-        if (navigator.share) {
-          await navigator.share(shareData);
-          return;
-        }
-
-        await navigator.clipboard.writeText(shareData.url);
-        window.alert("Website link copied.");
-      } catch (error) {
-        if (error instanceof DOMException && error.name === "AbortError") {
-          return;
-        }
-
-        console.error("Unable to share the website:", error);
-      }
-    };
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -122,6 +101,7 @@ export function Navbar() {
     };
   }, []);
 
+  // Lock body scroll while mobile menu is open
   useEffect(() => {
     if (!isMenuOpen) {
       document.body.style.overflow = "";
@@ -147,33 +127,38 @@ export function Navbar() {
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
-const handleShare = async () => {
-  const shareData = {
-    title: "MES | Software Built Around Your Business",
-    text: "Thoughtful software built around the way your business works.",
-    url: window.location.href,
+
+  const handleShare = async () => {
+    const shareData = {
+      title: "MES | Software Built Around Your Business",
+      text: "Thoughtful software built around the way your business works.",
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+
+        // Track only after the native share action succeeds.
+        trackClarityEvent("website_shared");
+        return;
+      }
+
+      await navigator.clipboard.writeText(shareData.url);
+
+      // Track successful fallback copy.
+      trackClarityEvent("website_shared");
+
+      window.alert("Website link copied.");
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") {
+        return;
+      }
+
+      console.error("Unable to share the website:", error);
+      window.alert("Unable to share the website.");
+    }
   };
-
-  try {
-    if (navigator.share) {
-      await navigator.share(shareData);
-      return;
-    }
-
-    await navigator.clipboard.writeText(shareData.url);
-    window.alert("Website link copied.");
-  } catch (error) {
-    if (
-      error instanceof DOMException &&
-      error.name === "AbortError"
-    ) {
-      return;
-    }
-
-    console.error("Unable to share the website:", error);
-    window.alert("Unable to share the website.");
-  }
-};
 
   return (
     <header
@@ -268,13 +253,10 @@ const handleShare = async () => {
           <div className="flex items-center gap-3">
             <Link
               href="#contact"
+              onClick={() => trackClarityEvent("contact_clicked")}
               className="mes-button mes-button-secondary group hidden sm:inline-flex"
             >
               Let&apos;s talk
-              <ArrowUpRight
-                aria-hidden="true"
-                className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-              />
             </Link>
 
             <button
@@ -283,20 +265,7 @@ const handleShare = async () => {
               aria-expanded={isMenuOpen}
               aria-controls="mobile-navigation"
               onClick={() => setIsMenuOpen((current) => !current)}
-              className="mes-icon-surface relative z-50 flex
-h-11
-w-11
-items-center
-justify-center
-rounded-full
-border
-border-white/10
-bg-white/[0.03]
-transition-all
-hover:border-blue-400/40
-hover:bg-blue-500/10
-lg:hidden
-"
+              className="mes-icon-surface relative z-50 flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] transition-all hover:border-blue-400/40 hover:bg-blue-500/10 lg:hidden"
             >
               {isMenuOpen ? (
                 <X aria-hidden="true" className="h-5 w-5" />
@@ -383,10 +352,14 @@ lg:hidden
 
             <Link
               href="#contact"
-              onClick={closeMenu}
+              onClick={() => {
+                trackClarityEvent("contact_clicked");
+                closeMenu();
+              }}
               className="mes-button mes-button-primary group mt-5 flex w-full justify-between"
             >
               Start a conversation
+
               <ArrowUpRight
                 aria-hidden="true"
                 className="h-5 w-5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -399,6 +372,7 @@ lg:hidden
               className="group mt-3 flex w-full items-center justify-between rounded-full border border-white/10 bg-white/[0.03] px-6 py-4 text-sm font-semibold text-white/65 transition-all duration-300 hover:border-blue-400/40 hover:bg-blue-500/10 hover:text-white"
             >
               Share this website
+
               <Share2
                 aria-hidden="true"
                 className="h-4 w-4 text-white/35 transition-colors duration-300 group-hover:text-blue-300"

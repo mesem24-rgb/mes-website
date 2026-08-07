@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import { trackClarityEvent } from "@/lib/clarity";
 
 type FeaturedProject = {
   name: string;
@@ -176,6 +177,14 @@ function ProjectVisual({ project }: { project: FeaturedProject }) {
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noreferrer" : undefined}
       aria-label={`${project.cta}: ${project.name}`}
+      onClick={() =>
+        trackClarityEvent(
+          `work_${project.name
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "_")
+            .replace(/^_|_$/g, "")}_clicked`,
+        )
+      }
       className="group relative block"
     >
       <div
