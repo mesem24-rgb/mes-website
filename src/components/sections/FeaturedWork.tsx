@@ -27,8 +27,9 @@ const projects: FeaturedProject[] = [
       "ConstructFlow brings project tracking, daily logs, RFIs, change orders, and document management into one structured platform designed around the way construction teams actually work.",
     image: "/images/products/constructFlow.jpg",
     imageAlt: "ConstructFlow construction management dashboard",
-    href: "https://construct-flow-psi.vercel.app/login",
-    cta: "Explore the platform",
+
+    href: "/work/constructflow",
+    cta: "View case study",
     technologies: [
       "Next.js",
       "TypeScript",
@@ -54,8 +55,8 @@ const projects: FeaturedProject[] = [
       "Compass CRM brings candidate management, job orders, recruiter assignments, client relationships, and pipeline activity into one structured platform designed around the way recruiting teams actually work.",
     image: "/images/products/compassCRM.jpg",
     imageAlt: "Compass CRM recruiting operations dashboard",
-    href: "https://compass-recruiting-crm.vercel.app/",
-    cta: "See the CRM",
+    href: "/work/compass-crm",
+    cta: "View case study",
     technologies: [
       "Next.js",
       "TypeScript",
@@ -82,8 +83,8 @@ const projects: FeaturedProject[] = [
       "The website presents Elite Ball Co. as a clean, dependable golf brand through focused messaging, product-oriented visuals, responsive design, and clear calls to action built to support future ecommerce growth.",
     image: "/images/products/elite-ball-co.jpg",
     imageAlt: "Elite Ball Co. reclaimed golf ball retail website",
-    href: "https://elite-ball-co.vercel.app/",
-    cta: "Visit the website",
+    href: "/work/elite-ball-co",
+    cta: "View case study",
     technologies: [
       "Next.js",
       "TypeScript",
