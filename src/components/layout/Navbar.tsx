@@ -128,6 +128,25 @@ export function Navbar() {
     setIsMenuOpen(false);
   };
 
+  const navigateToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+
+    if (!section) {
+      return;
+    }
+
+    // Replace any existing hash instead of allowing hashes to accumulate.
+    window.history.replaceState(null, "", `#${sectionId}`);
+
+    section.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+
+    setActiveSection(sectionId);
+    closeMenu();
+  };
+
   const handleShare = async () => {
     const shareData = {
       title: "MES | Software Built Around Your Business",
@@ -180,9 +199,21 @@ export function Navbar() {
         >
           {/* SECTION: Brand */}
           <Link
-            href="#"
+            href="/"
             aria-label="MES home"
-            onClick={closeMenu}
+            onClick={(event) => {
+              event.preventDefault();
+
+              window.history.replaceState(null, "", window.location.pathname);
+
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              });
+
+              setActiveSection("");
+              closeMenu();
+            }}
             className="group relative z-50 flex items-center"
           >
             <span className="relative inline-flex items-center">
@@ -220,6 +251,10 @@ export function Navbar() {
                   key={item.label}
                   href={item.href}
                   aria-current={isActive ? "location" : undefined}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    navigateToSection(item.sectionId);
+                  }}
                   className={[
                     "group relative flex items-center gap-2 py-2 text-sm font-medium transition-colors duration-300",
                     isActive ? "text-white" : "text-white/55 hover:text-white",
@@ -253,7 +288,11 @@ export function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               href="#contact"
-              onClick={() => trackClarityEvent("contact_clicked")}
+              onClick={(event) => {
+                event.preventDefault();
+                trackClarityEvent("contact_clicked");
+                navigateToSection("contact");
+              }}
               className="mes-button mes-button-secondary group hidden sm:inline-flex"
             >
               Let&apos;s talk
@@ -297,7 +336,10 @@ export function Navbar() {
                   key={item.label}
                   href={item.href}
                   aria-current={isActive ? "location" : undefined}
-                  onClick={closeMenu}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    navigateToSection(item.sectionId);
+                  }}
                   className={[
                     "group flex items-center justify-between border-b border-white/[0.08] py-7 transition-all duration-500",
                     isMenuOpen
@@ -352,14 +394,14 @@ export function Navbar() {
 
             <Link
               href="#contact"
-              onClick={() => {
+              onClick={(event) => {
+                event.preventDefault();
                 trackClarityEvent("contact_clicked");
-                closeMenu();
+                navigateToSection("contact");
               }}
               className="mes-button mes-button-primary group mt-5 flex w-full justify-between"
             >
               Start a conversation
-
               <ArrowUpRight
                 aria-hidden="true"
                 className="h-5 w-5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -372,7 +414,6 @@ export function Navbar() {
               className="group mt-3 flex w-full items-center justify-between rounded-full border border-white/10 bg-white/[0.03] px-6 py-4 text-sm font-semibold text-white/65 transition-all duration-300 hover:border-blue-400/40 hover:bg-blue-500/10 hover:text-white"
             >
               Share this website
-
               <Share2
                 aria-hidden="true"
                 className="h-4 w-4 text-white/35 transition-colors duration-300 group-hover:text-blue-300"
