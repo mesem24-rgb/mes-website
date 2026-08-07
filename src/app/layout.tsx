@@ -12,10 +12,12 @@ const organizationSchema = {
   alternateName: "Meaningful Empowering Solutions",
   url: "https://www.mes-solutions.dev",
   email: "contact@mes-solutions.dev",
+
   founder: {
     "@type": "Person",
     name: "Michael Sullivan",
   },
+
   areaServed: [
     {
       "@type": "City",
@@ -26,8 +28,10 @@ const organizationSchema = {
       name: "Mississippi Gulf Coast",
     },
   ],
+
   description:
     "MES builds custom websites, workflow applications, and practical software solutions for businesses.",
+
   knowsAbout: [
     "Custom website development",
     "Workflow applications",
@@ -117,10 +121,21 @@ export default function RootLayout({
 
         <Analytics />
 
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+
         <Script id="microsoft-clarity" strategy="afterInteractive">
           {`
             (function(c,l,a,r,i,t,y){
-              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              c[a]=c[a]||function(){
+                (c[a].q=c[a].q||[]).push(arguments)
+              };
               t=l.createElement(r);
               t.async=1;
               t.src="https://www.clarity.ms/tag/"+i;
