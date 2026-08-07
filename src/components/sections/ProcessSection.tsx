@@ -42,7 +42,7 @@ const processSteps: ProcessStep[] = [
 export function ProcessSection() {
   return (
     <section
-      id="process"
+      id="approach"
       aria-labelledby="process-heading"
       className="mes-section relative overflow-hidden"
     >
