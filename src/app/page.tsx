@@ -14,8 +14,8 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 export default function HomePage() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#070b12]">
+      <Navbar />
       <div className="relative z-10">
-        <Navbar />
         <Hero />
       </div>
 
