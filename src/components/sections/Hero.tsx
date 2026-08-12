@@ -1,6 +1,6 @@
-import { ArrowDown, ArrowRight, Link } from "lucide-react";
-import { trackClarityEvent } from "@/lib/clarity";
+import { ArrowDown, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { TrackedLink } from "@/components/analytics/TrackedLink";
 
 export function Hero() {
   return (
@@ -45,12 +45,7 @@ export function Hero() {
             <span>Meaningful. Empowering. Solutions.</span>
           </div>
 
-          <h1
-            className="mt-6 max-w-[10ch] text-5xl
-sm:text-6xl
-md:text-7xl
-lg:text-[6.5rem] font-semibold leading-[0.9] tracking-[-0.065em] text-white"
-          >
+          <h1 className="mt-6 max-w-[10ch] text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] font-semibold leading-[0.9] tracking-[-0.065em] text-white">
             Software
             <br />
             <span className="text-white/90">that fits</span>
@@ -71,13 +66,14 @@ lg:text-[6.5rem] font-semibold leading-[0.9] tracking-[-0.065em] text-white"
             </p>
 
             <div className="flex flex-col items-start gap-4 sm:flex-row lg:justify-self-start">
-              <Link
-                href="#journey"
-                onClick={() => trackClarityEvent("hero_cta_clicked")}
-                className="mes-button mes-button-primary"
+              <TrackedLink
+                href="/#journey"
+                eventName="hero_cta_clicked"
+                className="mes-button mes-button-primary group"
               >
                 Tell us how you work
-              </Link>
+                <ArrowRight aria-hidden="true" className="h-4 w-4" />
+              </TrackedLink>
 
               <Button href="#approach" variant="secondary">
                 Explore our approach

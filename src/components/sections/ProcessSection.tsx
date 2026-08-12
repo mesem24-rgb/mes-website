@@ -95,7 +95,7 @@ export function ProcessSection() {
                 ].join(" ")}
               >
                 <div className="relative z-10 flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-[#070b12] transition-all duration-500 group-hover:border-blue-300 group-hover:bg-blue-400 group-hover:shadow-[0_0_20px_rgba(96,165,250,0.55)]">
-                  <span className="text-[0.65rem] font-semibold tracking-[0.12em] text-white/45 transition-colors duration-500 group-hover:text-[#070b12]">
+                  <span className="text-xs font-semibold tracking-[0.12em] text-white/45 transition-colors duration-500 group-hover:text-[#070b12]">
                     {step.number}
                   </span>
                 </div>
@@ -127,7 +127,7 @@ export function ProcessSection() {
         {/* SECTION: Collaboration note */}
         <div className="mt-20 grid gap-8 border-t border-white/[0.08] pt-10 lg:mt-28 lg:grid-cols-[minmax(0,0.7fr)_minmax(26rem,1.3fr)] lg:items-start">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/28">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/45">
               Built with you, not handed to you
             </p>
           </div>

@@ -1,44 +1,47 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ArrowUpRight, Menu, Share2, X } from "lucide-react";
 import { trackClarityEvent } from "@/lib/clarity";
 
 const navigationItems = [
   {
     label: "Journey",
-    href: "#journey",
+    href: "/#journey",
     sectionId: "journey",
   },
   {
     label: "Philosophy",
-    href: "#philosophy",
+    href: "/#philosophy",
     sectionId: "philosophy",
   },
   {
     label: "Approach",
-    href: "#approach",
+    href: "/#approach",
     sectionId: "approach",
   },
   {
-    label: "Products",
-    href: "#products",
-    sectionId: "products",
+    label: "Services",
+    href: "/services",
+    sectionId: "",
   },
   {
     label: "Work",
-    href: "#featured-work",
+    href: "/#featured-work",
     sectionId: "featured-work",
   },
   {
-    label: "Together",
-    href: "#working-together",
-    sectionId: "working-together",
+    label: "About",
+    href: "/about",
+    sectionId: "",
   },
 ];
 
 export function Navbar() {
+  const pathname = usePathname();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
@@ -60,9 +63,15 @@ export function Navbar() {
     };
   }, []);
 
-  // Track active section
+  // Track active homepage section
   useEffect(() => {
+    if (pathname !== "/") {
+      setActiveSection("");
+      return;
+    }
+
     const sections = navigationItems
+      .filter((item) => item.sectionId !== "")
       .map((item) => document.getElementById(item.sectionId))
       .filter((section): section is HTMLElement => section !== null);
 
@@ -99,7 +108,7 @@ export function Navbar() {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [pathname]);
 
   // Lock body scroll while mobile menu is open
   useEffect(() => {
@@ -135,7 +144,6 @@ export function Navbar() {
       return;
     }
 
-    // Replace any existing hash instead of allowing hashes to accumulate.
     window.history.replaceState(null, "", `#${sectionId}`);
 
     section.scrollIntoView({
@@ -144,6 +152,54 @@ export function Navbar() {
     });
 
     setActiveSection(sectionId);
+    closeMenu();
+  };
+
+  const handleNavigation = (
+    event: MouseEvent<HTMLAnchorElement>,
+    href: string,
+    sectionId: string,
+  ) => {
+    const isHomepageSection =
+      pathname === "/" && href.startsWith("/#") && sectionId !== "";
+
+    if (isHomepageSection) {
+      event.preventDefault();
+      navigateToSection(sectionId);
+      return;
+    }
+
+    closeMenu();
+  };
+
+  const handleHomeClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (pathname !== "/") {
+      closeMenu();
+      return;
+    }
+
+    event.preventDefault();
+
+    window.history.replaceState(null, "", window.location.pathname);
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
+    setActiveSection("");
+    closeMenu();
+  };
+
+  const handleContactClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    trackClarityEvent("contact_clicked");
+
+    if (pathname === "/") {
+      event.preventDefault();
+      navigateToSection("contact");
+      return;
+    }
+
     closeMenu();
   };
 
@@ -158,14 +214,12 @@ export function Navbar() {
       if (navigator.share) {
         await navigator.share(shareData);
 
-        // Track only after the native share action succeeds.
         trackClarityEvent("website_shared");
         return;
       }
 
       await navigator.clipboard.writeText(shareData.url);
 
-      // Track successful fallback copy.
       trackClarityEvent("website_shared");
 
       window.alert("Website link copied.");
@@ -201,19 +255,7 @@ export function Navbar() {
           <Link
             href="/"
             aria-label="MES home"
-            onClick={(event) => {
-              event.preventDefault();
-
-              window.history.replaceState(null, "", window.location.pathname);
-
-              window.scrollTo({
-                top: 0,
-                behavior: "smooth",
-              });
-
-              setActiveSection("");
-              closeMenu();
-            }}
+            onClick={handleHomeClick}
             className="group relative z-50 flex items-center"
           >
             <span className="relative inline-flex items-center">
@@ -244,17 +286,17 @@ export function Navbar() {
             className="hidden items-center gap-8 lg:flex"
           >
             {navigationItems.map((item) => {
-              const isActive = activeSection === item.sectionId;
+              const isActive =
+                item.sectionId !== "" && activeSection === item.sectionId;
 
               return (
                 <Link
                   key={item.label}
                   href={item.href}
                   aria-current={isActive ? "location" : undefined}
-                  onClick={(event) => {
-                    event.preventDefault();
-                    navigateToSection(item.sectionId);
-                  }}
+                  onClick={(event) =>
+                    handleNavigation(event, item.href, item.sectionId)
+                  }
                   className={[
                     "group relative flex items-center gap-2 py-2 text-sm font-medium transition-colors duration-300",
                     isActive ? "text-white" : "text-white/55 hover:text-white",
@@ -287,12 +329,8 @@ export function Navbar() {
           {/* SECTION: Actions */}
           <div className="flex items-center gap-3">
             <Link
-              href="#contact"
-              onClick={(event) => {
-                event.preventDefault();
-                trackClarityEvent("contact_clicked");
-                navigateToSection("contact");
-              }}
+              href="/#contact"
+              onClick={handleContactClick}
               className="mes-button mes-button-secondary group hidden sm:inline-flex"
             >
               Let&apos;s talk
@@ -329,17 +367,17 @@ export function Navbar() {
         <div className="mes-container flex min-h-[100svh] flex-col pb-8 pt-28">
           <nav aria-label="Mobile navigation" className="flex flex-col">
             {navigationItems.map((item, index) => {
-              const isActive = activeSection === item.sectionId;
+              const isActive =
+                item.sectionId !== "" && activeSection === item.sectionId;
 
               return (
                 <Link
                   key={item.label}
                   href={item.href}
                   aria-current={isActive ? "location" : undefined}
-                  onClick={(event) => {
-                    event.preventDefault();
-                    navigateToSection(item.sectionId);
-                  }}
+                  onClick={(event) =>
+                    handleNavigation(event, item.href, item.sectionId)
+                  }
                   className={[
                     "group flex items-center justify-between border-b border-white/[0.08] py-7 transition-all duration-500",
                     isMenuOpen
@@ -393,12 +431,8 @@ export function Navbar() {
             </p>
 
             <Link
-              href="#contact"
-              onClick={(event) => {
-                event.preventDefault();
-                trackClarityEvent("contact_clicked");
-                navigateToSection("contact");
-              }}
+              href="/#contact"
+              onClick={handleContactClick}
               className="mes-button mes-button-primary group mt-5 flex w-full justify-between"
             >
               Start a conversation
@@ -420,7 +454,7 @@ export function Navbar() {
               />
             </button>
 
-            <div className="mt-8 grid grid-cols-3 border-t border-white/[0.08] pt-6 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-white/25">
+            <div className="mt-8 grid grid-cols-3 border-t border-white/[0.08] pt-6 text-xs font-semibold uppercase tracking-[0.14em] text-white/25">
               <span>Meaningful</span>
               <span className="text-center">Empowering</span>
               <span className="text-right">Solutions</span>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 
 const navigation = [
   { label: "Journey", href: "#journey" },
@@ -63,14 +64,14 @@ export function Footer() {
               Solutions.
             </p>
 
-            <p className="mt-6 max-w-sm text-sm leading-7 text-white/42">
-              Helping organizations build thoughtful software that fits the
-              way they work.
+            <p className="mt-6 max-w-sm text-sm leading-7 text-white/60">
+              Helping organizations build thoughtful software that fits the way
+              they work.
             </p>
           </div>
 
           <div>
-            <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-white/28">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/45">
               Navigation
             </p>
 
@@ -96,7 +97,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-white/28">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/45">
               Resources
             </p>
 
@@ -121,7 +122,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-white/28">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/45">
               Contact
             </p>
 
@@ -146,7 +147,6 @@ export function Footer() {
               className="group mt-8 inline-flex items-center gap-3 border-b border-white/15 pb-1.5 text-sm font-semibold text-white/65 transition-all duration-300 hover:border-blue-400/20 hover:text-white"
             >
               Start a conversation
-
               <ArrowUpRight
                 aria-hidden="true"
                 className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -155,9 +155,16 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-5 border-t border-white/[0.08] py-7 text-xs text-white/28 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {currentYear} MES. All rights reserved.</p>
-
+        <div className="flex flex-col gap-5 border-t border-white/[0.08] py-7 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} MES. All rights reserved.</p>
+          <Image
+            src="/icons/ichthus-footer-mark.png"
+            alt=""
+            width={28}
+            height={13}
+            aria-hidden="true"
+            className="h-auto w-7 opacity-20"
+          />
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <span>Built by Michael Sullivan</span>
             <span className="hidden h-1 w-1 rounded-full bg-white/20 sm:block" />

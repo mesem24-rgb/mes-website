@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { SiteFrame } from "@/components/layout/SiteFrame";
 
 const capabilities = [
   "Brand introduction",
@@ -56,6 +57,7 @@ export const metadata: Metadata = {
 
 export default function EliteBallCoCaseStudy() {
   return (
+    <SiteFrame>
     <main className="min-h-screen bg-[#070b12] text-white">
       {/* HERO */}
       <section className="mes-section">
@@ -119,7 +121,7 @@ export default function EliteBallCoCaseStudy() {
 
           <div className="grid border-x border-b border-white/[0.08] sm:grid-cols-3">
             <div className="border-b border-white/[0.08] px-6 py-5 sm:border-b-0 sm:border-r">
-              <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-white/25">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/25">
                 Project type
               </p>
 
@@ -129,7 +131,7 @@ export default function EliteBallCoCaseStudy() {
             </div>
 
             <div className="border-b border-white/[0.08] px-6 py-5 sm:border-b-0 sm:border-r">
-              <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-white/25">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/25">
                 Industry
               </p>
 
@@ -139,7 +141,7 @@ export default function EliteBallCoCaseStudy() {
             </div>
 
             <div className="px-6 py-5">
-              <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-white/25">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/25">
                 Focus
               </p>
 
@@ -354,5 +356,6 @@ export default function EliteBallCoCaseStudy() {
         </div>
       </section>
     </main>
+    </SiteFrame>
   );
 }

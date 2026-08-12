@@ -70,7 +70,7 @@ tracking-[-0.06em] font-semibold leading-[0.92] tracking-[-0.07em] text-white"
               Technology should adapt to people.
             </h2>
 
-            <p className="mt-3 max-w-[10ch] text-[clamp(3rem,6vw,6rem)] font-semibold leading-[0.92] tracking-[-0.07em] text-white/28">
+            <p className="mt-3 max-w-[10ch] text-[clamp(3rem,6vw,6rem)] font-semibold leading-[0.92] tracking-[-0.07em] text-white/45">
               Not the other way around.
             </p>
 
@@ -160,7 +160,7 @@ tracking-[-0.06em] font-semibold leading-[0.92] tracking-[-0.07em] text-white"
         {/* SECTION: Closing thought */}
         <div className="mt-20 border-t border-white/[0.08] pt-10 lg:mt-28">
           <div className="grid gap-6 lg:grid-cols-[minmax(0,0.75fr)_minmax(24rem,1.25fr)] lg:items-start">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/28">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/45">
               The MES standard
             </p>
 

@@ -119,7 +119,7 @@ export function ProductsSection() {
                 ].join(" ")}
               >
                 <div className="flex items-center gap-4 lg:block">
-                  <span className="text-xs font-semibold tracking-[0.18em] text-white/28">
+                  <span className="text-xs font-semibold tracking-[0.18em] text-white/45">
                     {area.number}
                   </span>
 
@@ -172,7 +172,7 @@ export function ProductsSection() {
         {/* SECTION: Product philosophy */}
         <div className="mt-16 grid gap-8 lg:mt-24 lg:grid-cols-[minmax(0,0.72fr)_minmax(26rem,1.28fr)] lg:items-start">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/28">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/45">
               Not another generic platform
             </p>
           </div>

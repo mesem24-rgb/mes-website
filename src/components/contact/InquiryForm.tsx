@@ -79,6 +79,8 @@ export function InquiryForm() {
     } catch (error) {
       setStatus("error");
 
+      trackClarityEvent("inquiry_error");
+
       setErrorMessage(
         error instanceof Error
           ? error.message
@@ -88,35 +90,54 @@ export function InquiryForm() {
   }
 
   if (status === "success") {
-    return (
-      <div
-        role="status"
-        className="border border-white/[0.08] bg-white/[0.025] p-8 sm:p-10"
-      >
+  return (
+    <div
+      role="status"
+      className="rounded-2xl border border-blue-400/15 bg-blue-400/[0.04] p-8 sm:p-10"
+    >
+      <div className="flex h-12 w-12 items-center justify-center rounded-full border border-blue-400/20 bg-blue-400/10">
         <CheckCircle2
           aria-hidden="true"
-          className="h-9 w-9 text-blue-300"
+          className="h-5 w-5 text-blue-300"
         />
+      </div>
 
-        <h3 className="mt-6 text-3xl font-semibold tracking-[-0.045em] text-white">
-          Your inquiry has been received.
-        </h3>
+      <p className="mt-8 text-xs font-semibold uppercase tracking-[0.18em] text-blue-300/70">
+        Inquiry received
+      </p>
 
-        <p className="mt-4 max-w-lg text-base leading-7 text-white/50">
-          Thank you for reaching out. I’ll review the details
-          and contact you to discuss the best next step.
+      <h3 className="mt-4 max-w-lg text-3xl font-semibold tracking-[-0.045em] text-white sm:text-4xl">
+        Thanks for reaching out.
+      </h3>
+
+      <p className="mt-5 max-w-xl text-base leading-7 text-white/50">
+        I&apos;ll review what you shared and follow up to learn
+        more about the business, the problem you&apos;re trying
+        to solve, and whether MES is the right fit.
+      </p>
+
+      <div className="mt-8 border-t border-white/[0.08] pt-6">
+        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/25">
+          What happens next
         </p>
 
-        <button
-          type="button"
-          onClick={() => setStatus("idle")}
-          className="mt-8 text-sm font-semibold text-white/60 transition-colors hover:text-white"
-        >
-          Send another inquiry
-        </button>
+        <p className="mt-3 max-w-xl text-sm leading-6 text-white/45">
+          The first conversation is about understanding the need.
+          You don&apos;t need a finished specification, technical
+          plan, or complete list of requirements.
+        </p>
       </div>
-    );
-  }
+
+      <button
+        type="button"
+        onClick={() => setStatus("idle")}
+        className="mt-8 text-sm font-semibold text-white/55 transition-colors hover:text-white"
+      >
+        Send another inquiry
+      </button>
+    </div>
+  );
+}
 
   return (
     <form
@@ -285,7 +306,7 @@ export function InquiryForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="mes-button mes-button-primary group justify-center disabled:cursor-not-allowed disabled:opacity-60"
+          className="mes-button mes-button-primary group justify-center disabled:cursor-not-allowed disabled: bg-blue-500/60 disabled:opacity-80"
         >
           {status === "submitting" ? (
             <>

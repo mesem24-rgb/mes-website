@@ -45,11 +45,7 @@ function getPointCount(width: number) {
   return DESKTOP_POINT_COUNT;
 }
 
-function createPoints(
-  count: number,
-  width: number,
-  height: number,
-): Point[] {
+function createPoints(count: number, width: number, height: number): Point[] {
   return Array.from({ length: count }, (_, index) => {
     const x = Math.random() * width;
     const y = Math.random() * height;
@@ -67,22 +63,14 @@ function createPoints(
   });
 }
 
-function setIdleTargets(
-  points: Point[],
-  width: number,
-  height: number,
-) {
+function setIdleTargets(points: Point[], width: number, height: number) {
   for (const point of points) {
     point.targetX = Math.random() * width;
     point.targetY = Math.random() * height;
   }
 }
 
-function setBuildTargets(
-  points: Point[],
-  width: number,
-  height: number,
-) {
+function setBuildTargets(points: Point[], width: number, height: number) {
   const columns = Math.ceil(Math.sqrt(points.length));
   const rows = Math.ceil(points.length / columns);
 
@@ -96,21 +84,13 @@ function setBuildTargets(
     const column = index % columns;
     const row = Math.floor(index / columns);
 
-    point.targetX =
-      startX +
-      (column / Math.max(columns - 1, 1)) * gridWidth;
+    point.targetX = startX + (column / Math.max(columns - 1, 1)) * gridWidth;
 
-    point.targetY =
-      startY +
-      (row / Math.max(rows - 1, 1)) * gridHeight;
+    point.targetY = startY + (row / Math.max(rows - 1, 1)) * gridHeight;
   });
 }
 
-function setImproveTargets(
-  points: Point[],
-  width: number,
-  height: number,
-) {
+function setImproveTargets(points: Point[], width: number, height: number) {
   const horizontalPadding = width * 0.08;
   const usableWidth = width - horizontalPadding * 2;
 
@@ -124,11 +104,7 @@ function setImproveTargets(
   });
 }
 
-function setTransformTargets(
-  points: Point[],
-  width: number,
-  height: number,
-) {
+function setTransformTargets(points: Point[], width: number, height: number) {
   const centerX = width / 2;
   const centerY = height / 2;
   const maxRadius = Math.min(width, height) * 0.34;
@@ -161,16 +137,14 @@ function setTargets(
   }
 
   if (mode === "clarify") {
-  setTransformTargets(points, width, height);
-  return;
-}
+    setTransformTargets(points, width, height);
+    return;
+  }
 
   setIdleTargets(points, width, height);
 }
 
-export function LivingBackground({
-  mode,
-}: LivingBackgroundProps) {
+export function LivingBackground({ mode }: LivingBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const shouldReduceMotion = useReducedMotion();
 
@@ -192,11 +166,7 @@ export function LivingBackground({
     let height = window.innerHeight;
     let elapsed = 0;
 
-    let points = createPoints(
-      getPointCount(width),
-      width,
-      height,
-    );
+    let points = createPoints(getPointCount(width), width, height);
 
     const pointer: PointerPosition = {
       x: width / 2,
@@ -208,30 +178,16 @@ export function LivingBackground({
       width = window.innerWidth;
       height = window.innerHeight;
 
-      const pixelRatio = Math.min(
-        window.devicePixelRatio || 1,
-        2,
-      );
+      const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
 
       canvas.width = width * pixelRatio;
       canvas.height = height * pixelRatio;
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
 
-      context.setTransform(
-        pixelRatio,
-        0,
-        0,
-        pixelRatio,
-        0,
-        0,
-      );
+      context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
 
-      points = createPoints(
-        getPointCount(width),
-        width,
-        height,
-      );
+      points = createPoints(getPointCount(width), width, height);
 
       setTargets(mode, points, width, height);
     };
@@ -274,16 +230,13 @@ export function LivingBackground({
           let animatedTargetY = point.targetY;
 
           if (mode === "improve") {
-            animatedTargetY +=
-              Math.sin(elapsed * 2 + point.phase) * 10;
+            animatedTargetY += Math.sin(elapsed * 2 + point.phase) * 10;
           }
 
           if (mode === "clarify") {
-            animatedTargetX +=
-              Math.cos(elapsed + point.phase) * 6;
+            animatedTargetX += Math.cos(elapsed + point.phase) * 6;
 
-            animatedTargetY +=
-              Math.sin(elapsed + point.phase) * 6;
+            animatedTargetY += Math.sin(elapsed + point.phase) * 6;
           }
 
           point.x += (animatedTargetX - point.x) * 0.025;
@@ -299,14 +252,11 @@ export function LivingBackground({
         const distance = Math.hypot(dx, dy);
 
         if (distance > 0 && distance < POINTER_DISTANCE) {
-          const influence =
-            (POINTER_DISTANCE - distance) / POINTER_DISTANCE;
+          const influence = (POINTER_DISTANCE - distance) / POINTER_DISTANCE;
 
-          point.x +=
-            (dx / distance) * influence * 0.22;
+          point.x += (dx / distance) * influence * 0.22;
 
-          point.y +=
-            (dy / distance) * influence * 0.22;
+          point.y += (dy / distance) * influence * 0.22;
         }
       }
     };
@@ -325,31 +275,18 @@ export function LivingBackground({
         240,
       );
 
-      gradient.addColorStop(
-        0,
-        "rgba(52, 120, 246, 0.10)",
-      );
+      gradient.addColorStop(0, "rgba(52, 120, 246, 0.10)");
 
-      gradient.addColorStop(
-        0.45,
-        "rgba(52, 120, 246, 0.035)",
-      );
+      gradient.addColorStop(0.45, "rgba(52, 120, 246, 0.035)");
 
-      gradient.addColorStop(
-        1,
-        "rgba(52, 120, 246, 0)",
-      );
+      gradient.addColorStop(1, "rgba(52, 120, 246, 0)");
 
       context.fillStyle = gradient;
       context.fillRect(0, 0, width, height);
     };
 
     const drawConnections = () => {
-      for (
-        let firstIndex = 0;
-        firstIndex < points.length;
-        firstIndex += 1
-      ) {
+      for (let firstIndex = 0; firstIndex < points.length; firstIndex += 1) {
         const firstPoint = points[firstIndex];
 
         for (
@@ -395,29 +332,14 @@ export function LivingBackground({
           glowRadius,
         );
 
-        gradient.addColorStop(
-          0,
-          "rgba(170, 210, 255, 0.8)",
-        );
+        gradient.addColorStop(0, "rgba(170, 210, 255, 0.8)");
 
-        gradient.addColorStop(
-          0.3,
-          "rgba(99, 160, 255, 0.38)",
-        );
+        gradient.addColorStop(0.3, "rgba(99, 160, 255, 0.38)");
 
-        gradient.addColorStop(
-          1,
-          "rgba(52, 120, 246, 0)",
-        );
+        gradient.addColorStop(1, "rgba(52, 120, 246, 0)");
 
         context.beginPath();
-        context.arc(
-          point.x,
-          point.y,
-          glowRadius,
-          0,
-          Math.PI * 2,
-        );
+        context.arc(point.x, point.y, glowRadius, 0, Math.PI * 2);
 
         context.fillStyle = gradient;
         context.fill();
@@ -439,19 +361,38 @@ export function LivingBackground({
 
       draw();
 
-      animationFrameId =
-        window.requestAnimationFrame(animate);
+      animationFrameId = window.requestAnimationFrame(animate);
     };
 
     resizeCanvas();
     setTargets(mode, points, width, height);
-    animate();
+
+    // Draw the initial background immediately.
+    draw();
+
+    // Animation is visual enhancement, so allow the page to finish
+    // its important startup work before beginning the continuous loop.
+    let idleCallbackId: number | undefined;
+    let animationStartTimer: ReturnType<typeof setTimeout> | undefined;
+
+    const startAnimation = () => {
+      if (shouldReduceMotion) {
+        return;
+      }
+
+      animationFrameId = window.requestAnimationFrame(animate);
+    };
+
+    if ("requestIdleCallback" in window) {
+      idleCallbackId = window.requestIdleCallback(startAnimation, {
+        timeout: 1500,
+      });
+    } else {
+      animationStartTimer = setTimeout(startAnimation, 800);
+    }
 
     window.addEventListener("resize", resizeCanvas);
-    window.addEventListener(
-      "pointermove",
-      handlePointerMove,
-    );
+    window.addEventListener("pointermove", handlePointerMove);
 
     document.documentElement.addEventListener(
       "pointerleave",
@@ -460,16 +401,17 @@ export function LivingBackground({
 
     return () => {
       window.cancelAnimationFrame(animationFrameId);
+      if (idleCallbackId !== undefined && "cancelIdleCallback" in window) {
+        window.cancelIdleCallback(idleCallbackId);
+      }
 
-      window.removeEventListener(
-        "resize",
-        resizeCanvas,
-      );
+      if (animationStartTimer !== undefined) {
+        clearTimeout(animationStartTimer);
+      }
 
-      window.removeEventListener(
-        "pointermove",
-        handlePointerMove,
-      );
+      window.removeEventListener("resize", resizeCanvas);
+
+      window.removeEventListener("pointermove", handlePointerMove);
 
       document.documentElement.removeEventListener(
         "pointerleave",

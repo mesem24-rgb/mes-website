@@ -76,7 +76,7 @@ tracking-[-0.06em] font-semibold leading-[0.92] tracking-[-0.07em] text-white"
                 className="group grid gap-5 border-b border-white/[0.08] py-10 sm:grid-cols-[5rem_1fr] sm:gap-8 sm:py-12"
               >
                 <div>
-                  <span className="font-mono text-[0.7rem] font-medium tracking-[0.12em] text-blue-300/60">
+                  <span className="font-mono text-xs font-medium tracking-[0.12em] text-blue-300/60">
                     {principle.number}
                   </span>
                 </div>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
+import { SiteFrame } from "@/components/layout/SiteFrame";
 
 export const metadata: Metadata = {
   title: "ConstructFlow Case Study",
@@ -56,6 +57,7 @@ const technologies = [
 
 export default function ConstructFlowCaseStudy() {
   return (
+    <SiteFrame>
     <main className="min-h-screen bg-[#070b12] text-white">
       <section className="mes-section">
         <div className="mes-container">
@@ -113,7 +115,7 @@ export default function ConstructFlowCaseStudy() {
             />
             <div className="grid border-x border-b border-white/[0.08] sm:grid-cols-3">
               <div className="border-b border-white/[0.08] px-6 py-5 sm:border-b-0 sm:border-r">
-                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-white/25">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/25">
                   Project type
                 </p>
                 <p className="mt-2 text-sm text-white/60">
@@ -122,14 +124,14 @@ export default function ConstructFlowCaseStudy() {
               </div>
 
               <div className="border-b border-white/[0.08] px-6 py-5 sm:border-b-0 sm:border-r">
-                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-white/25">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/25">
                   Industry
                 </p>
                 <p className="mt-2 text-sm text-white/60">Construction</p>
               </div>
 
               <div className="px-6 py-5">
-                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-white/25">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/25">
                   Focus
                 </p>
                 <p className="mt-2 text-sm text-white/60">
@@ -330,5 +332,6 @@ export default function ConstructFlowCaseStudy() {
         </div>
       </section>
     </main>
+    </SiteFrame>
   );
 }

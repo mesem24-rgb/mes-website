@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-import { trackClarityEvent } from "@/lib/clarity";
+import { TrackedLink } from "@/components/analytics/TrackedLink";
 
 type FeaturedProject = {
   name: string;
@@ -132,7 +132,7 @@ const projects: FeaturedProject[] = [
 function DetailList({ label, items }: { label: string; items: string[] }) {
   return (
     <div>
-      <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-white/30">
+      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/30">
         {label}
       </p>
 
@@ -158,7 +158,7 @@ function DetailList({ label, items }: { label: string; items: string[] }) {
 function StoryBlock({ label, children }: { label: string; children: string }) {
   return (
     <div className="border-l border-white/[0.09] pl-5">
-      <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-blue-300/65">
+      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-300/65">
         {label}
       </p>
 
@@ -173,19 +173,15 @@ function ProjectVisual({ project }: { project: FeaturedProject }) {
   const isExternal = project.href.startsWith("http");
 
   return (
-    <a
+    <TrackedLink
       href={project.href}
+      eventName={`work_${project.name
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "_")
+        .replace(/^_|_$/g, "")}_clicked`}
+      ariaLabel={`${project.cta}: ${project.name}`}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noreferrer" : undefined}
-      aria-label={`${project.cta}: ${project.name}`}
-      onClick={() =>
-        trackClarityEvent(
-          `work_${project.name
-            .toLowerCase()
-            .replace(/[^a-z0-9]+/g, "_")
-            .replace(/^_|_$/g, "")}_clicked`,
-        )
-      }
       className="group relative block"
     >
       <div
@@ -225,7 +221,7 @@ function ProjectVisual({ project }: { project: FeaturedProject }) {
           />
         </div>
       </div>
-    </a>
+    </TrackedLink>
   );
 }
 
@@ -241,13 +237,13 @@ function ProjectDetails({
   return (
     <div className="flex h-full flex-col justify-start lg:pt-1">
       <div className="flex items-center gap-3">
-        <span className="font-mono text-[0.7rem] font-medium tracking-[0.12em] text-blue-300/75">
+        <span className="font-mono text-xs font-medium tracking-[0.12em] text-blue-300/75">
           0{index + 1}
         </span>
 
         <span className="text-white/20">/</span>
 
-        <p className="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-white/35">
+        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/35">
           {project.category}
         </p>
       </div>
