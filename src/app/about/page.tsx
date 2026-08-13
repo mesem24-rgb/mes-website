@@ -11,27 +11,28 @@ import {
 import { SiteFrame } from "@/components/layout/SiteFrame";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About MES | Software Development in Gulfport, MS",
+
   description:
-    "Learn about MES, a software development business combining modern web development with more than 20 years of leadership and operations experience.",
+    "MES is a Gulfport, Mississippi software development business combining modern web development with more than 20 years of leadership and operations experience to build practical software around real business needs.",
 
   alternates: {
     canonical: "/about",
   },
 
   openGraph: {
-    title: "About MES | Software Built Around Your Business",
+    title: "About MES | Software Development in Gulfport, MS",
     description:
-      "MES combines practical business understanding with thoughtful software development to create tools that fit the way organizations actually work.",
+      "Learn how MES combines business experience, thoughtful software development, and a collaborative approach to build solutions around the way businesses actually work.",
     url: "/about",
     type: "website",
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "About MES | Software Built Around Your Business",
+    title: "About MES | Software Development in Gulfport, MS",
     description:
-      "Practical business understanding, thoughtful software development, and a collaborative approach to solving real operational problems.",
+      "Business experience and thoughtful software development brought together to solve real operational problems.",
   },
 };
 
@@ -106,10 +107,10 @@ export default function AboutPage() {
 
               <div className="max-w-xl lg:justify-self-end">
                 <p className="text-lg leading-8 text-white/52">
-                  MES combines modern software development with decades of
-                  business leadership and operational experience to build
-                  thoughtful digital tools around real workflows, real people,
-                  and real decisions.
+                  Based in Gulfport, Mississippi, MES combines modern software
+                  development with decades of business leadership and
+                  operational experience to build thoughtful digital tools
+                  around real workflows, real people, and real decisions.
                 </p>
 
                 <Link
@@ -140,14 +141,14 @@ export default function AboutPage() {
 
               <div className="max-w-2xl">
                 <p className="text-base leading-8 text-white/52">
-                  Before moving into software development, I spent more than two
+                  MES was founded by Michael Sullivan after more than two
                   decades leading teams, managing operations, solving process
                   problems, and working with people responsible for getting real
                   work done every day.
                 </p>
 
                 <p className="mt-6 text-base leading-8 text-white/52">
-                  That experience changed the way I approach software. I do not
+                  That experience shapes the way I approach software. I do not
                   begin with a framework, feature list, or technology stack. I
                   begin by understanding the business, the people using the
                   system, what is getting in the way, and what a better outcome

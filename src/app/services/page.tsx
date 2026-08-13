@@ -95,18 +95,30 @@ const serviceTypes = [
     title: "Business websites",
     description:
       "Custom business websites designed to establish credibility, improve local visibility, explain your services clearly, and turn visitors into customer inquiries.",
+    caseStudy: {
+      label: "See Elite Ball Co.",
+      href: "/work/elite-ball-co",
+    },
   },
   {
     icon: LayoutDashboard,
     title: "Operational platforms",
     description:
       "Custom systems that bring projects, people, documents, tasks, and day-to-day workflows into one structured workspace.",
+    caseStudy: {
+      label: "See ConstructFlow",
+      href: "/work/constructflow",
+    },
   },
   {
     icon: BriefcaseBusiness,
     title: "Client & team portals",
     description:
       "Secure digital spaces for sharing information, managing activity, and keeping customers or internal teams connected.",
+    caseStudy: {
+      label: "See Compass CRM",
+      href: "/work/compass-crm",
+    },
   },
   {
     icon: Workflow,
@@ -349,6 +361,16 @@ export default function ServicesPage() {
                     <p className="mt-5 max-w-sm text-sm leading-7 text-white/43 sm:text-base sm:leading-8">
                       {service.description}
                     </p>
+
+                    {service.caseStudy && (
+                      <Link
+                        href={service.caseStudy.href}
+                        className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white/55 transition-colors hover:text-white"
+                      >
+                        {service.caseStudy.label}
+                        <ArrowUpRight className="h-4 w-4" />
+                      </Link>
+                    )}
                   </article>
                 );
               })}

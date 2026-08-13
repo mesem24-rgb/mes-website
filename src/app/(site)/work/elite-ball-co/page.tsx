@@ -5,58 +5,58 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { SiteFrame } from "@/components/layout/SiteFrame";
 
 const capabilities = [
-  "Candidate pipeline",
-  "Job orders",
-  "Recruiter ownership",
-  "Client management",
-  "Assignment locking",
-  "Workflow guidance",
+  "Small-business website design",
+  "Brand presentation",
+  "Product education",
+  "Pricing presentation",
+  "Responsive mobile design",
+  "Customer conversion",
 ];
 
 const technologies = [
   "Next.js",
   "TypeScript",
-  "Supabase",
-  "PostgreSQL",
   "Tailwind CSS",
+  "Responsive design",
   "Vercel",
 ];
 
 export const metadata: Metadata = {
-  title: "Compass CRM Case Study",
+  title: "Small Business Website Design | Elite Ball Co.",
+
   description:
-    "See how MES designed Compass CRM, a recruiting operations platform for candidate management, job orders, recruiter ownership, client relationships, and pipeline visibility.",
+    "See how MES designed and developed a responsive small-business website for Elite Ball Co. focused on brand credibility, product presentation, clear pricing, mobile usability, and customer conversion.",
 
   alternates: {
-    canonical: "/work/compass-crm",
+    canonical: "/work/elite-ball-co",
   },
 
   openGraph: {
-    title: "Compass CRM Case Study | MES",
+    title: "Elite Ball Co. | Small Business Website Case Study",
     description:
-      "A recruiting operations platform designed around recruiter workflows, ownership, candidate search, and client visibility.",
-    url: "/work/compass-crm",
+      "A responsive small-business website designed by MES to establish credibility, present products clearly, communicate pricing, and create a simple customer journey.",
+    url: "/work/elite-ball-co",
     type: "article",
     images: [
       {
-        url: "/images/products/compassCRM.jpg",
+        url: "/images/products/elite-ball-co.jpg",
         width: 1440,
         height: 900,
-        alt: "Compass CRM recruiting operations dashboard",
+        alt: "Elite Ball Co. small business website designed by MES",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Compass CRM Case Study | MES",
+    title: "Elite Ball Co. | Small Business Website Case Study",
     description:
-      "A recruiting operations platform designed around recruiter workflows, ownership, candidate search, and client visibility.",
-    images: ["/images/products/compassCRM.jpg"],
+      "A responsive small-business website built around brand credibility, product clarity, mobile usability, and customer conversion.",
+    images: ["/images/products/elite-ball-co.jpg"],
   },
 };
 
-export default function CompassCRMCaseStudy() {
+export default function EliteBallCoCaseStudy() {
   return (
     <SiteFrame>
       <main className="min-h-screen bg-[#070b12] text-white">
@@ -78,29 +78,31 @@ export default function CompassCRMCaseStudy() {
                   Case study
                 </p>
 
-                <h1 className="mt-6 max-w-[10ch] text-[clamp(3.5rem,8vw,7rem)] font-semibold leading-[0.9] tracking-[-0.075em]">
-                  Compass CRM
+                <h1 className="mt-6 max-w-[11ch] text-[clamp(3.5rem,8vw,7rem)] font-semibold leading-[0.9] tracking-[-0.075em]">
+                  Elite Ball Co.
                 </h1>
 
                 <p className="mt-6 max-w-xl text-2xl leading-tight tracking-[-0.03em] text-white/75">
-                  Simplifying recruiter workflows and client collaboration.
+                  Creating a trustworthy digital presence for quality reclaimed
+                  golf balls.
                 </p>
               </div>
 
               <div className="max-w-xl lg:justify-self-end">
                 <p className="text-base leading-8 text-white/48">
-                  Compass CRM was designed to bring candidates, job orders,
-                  recruiter assignments, client relationships, and pipeline
-                  activity into one structured recruiting workspace.
+                  MES designed and developed a responsive small-business website
+                  for Elite Ball Co. that introduces the brand, explains the
+                  value of reclaimed golf balls, presents pricing clearly, and
+                  gives customers a simple path from discovery to contact.
                 </p>
 
                 <a
-                  href="https://compass-recruiting-crm.vercel.app/"
+                  href="https://elite-ball-co.vercel.app/"
                   target="_blank"
                   rel="noreferrer"
                   className="group mt-8 inline-flex items-center gap-3 border-b border-white/15 pb-1.5 text-sm font-semibold text-white/65 transition-all hover:border-blue-400/60 hover:text-white"
                 >
-                  Explore the platform
+                  Visit the website
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </a>
               </div>
@@ -108,8 +110,8 @@ export default function CompassCRMCaseStudy() {
 
             <div className="mt-16 overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02]">
               <Image
-                src="/images/products/compassCRM.jpg"
-                alt="Compass CRM recruiting operations dashboard"
+                src="/images/products/elite-ball-co.jpg"
+                alt="Elite Ball Co. reclaimed golf ball website"
                 width={1440}
                 height={900}
                 className="h-auto w-full"
@@ -122,8 +124,9 @@ export default function CompassCRMCaseStudy() {
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/25">
                   Project type
                 </p>
+
                 <p className="mt-2 text-sm text-white/60">
-                  Recruiting operations platform
+                  Small-business website
                 </p>
               </div>
 
@@ -131,15 +134,17 @@ export default function CompassCRMCaseStudy() {
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/25">
                   Industry
                 </p>
-                <p className="mt-2 text-sm text-white/60">Recruiting</p>
+
+                <p className="mt-2 text-sm text-white/60">Golf retail</p>
               </div>
 
               <div className="px-6 py-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/25">
                   Focus
                 </p>
+
                 <p className="mt-2 text-sm text-white/60">
-                  Workflow & ownership visibility
+                  Product clarity & customer trust
                 </p>
               </div>
             </div>
@@ -155,16 +160,16 @@ export default function CompassCRMCaseStudy() {
               </p>
 
               <h2 className="mt-5 max-w-[11ch] text-4xl font-semibold tracking-[-0.05em] sm:text-5xl">
-                Too much recruiting activity spread across too many places.
+                A good product still needs a clear story.
               </h2>
             </div>
 
             <p className="max-w-xl text-base leading-8 text-white/48">
-              Recruiting teams need to manage candidates, job orders, recruiter
-              responsibilities, client relationships, replacements, and pipeline
-              activity at the same time. When those workflows live in separate
-              spreadsheets, inboxes, and tools, ownership becomes unclear and
-              important work is easier to miss.
+              Reclaimed golf balls can offer golfers strong value, but customers
+              still need confidence in what they are buying. Elite Ball Co.
+              needed a website that could establish credibility, explain the
+              offering, communicate pricing, and make the business feel
+              approachable from the first visit.
             </p>
           </div>
         </section>
@@ -178,15 +183,16 @@ export default function CompassCRMCaseStudy() {
               </p>
 
               <h2 className="mt-5 max-w-[11ch] text-4xl font-semibold tracking-[-0.05em] sm:text-5xl">
-                One system that keeps recruiters moving through the work.
+                Keep the experience simple and let the offer do the work.
               </h2>
             </div>
 
             <p className="max-w-xl text-base leading-8 text-white/48">
-              Compass CRM organizes candidate management, job orders, recruiter
-              assignments, ownership rules, clients, and pipeline activity
-              around a clear recruiting workflow so users can understand what
-              needs attention and who is responsible for it.
+              The site focuses on a direct customer journey: understand the
+              business, see the reclaimed golf ball offering, understand the
+              pricing, and know how to take the next step. The design stays
+              clean and responsive so the product remains the center of
+              attention.
             </p>
           </div>
         </section>
@@ -201,7 +207,7 @@ export default function CompassCRMCaseStudy() {
                 </p>
 
                 <h2 className="mt-5 max-w-[11ch] text-4xl font-semibold tracking-[-0.05em] sm:text-5xl">
-                  Make ownership, priority, and next actions obvious.
+                  Build confidence before adding complexity.
                 </h2>
               </div>
 
@@ -211,13 +217,13 @@ export default function CompassCRMCaseStudy() {
 
                   <div>
                     <h3 className="text-xl font-semibold tracking-[-0.03em]">
-                      Treat recruiter ownership as part of the workflow
+                      Lead with the product
                     </h3>
 
                     <p className="mt-3 max-w-2xl text-sm leading-7 text-white/45 sm:text-base sm:leading-8">
-                      Assignment ownership is visible inside the platform so
-                      recruiters can understand who is responsible for a job and
-                      when that responsibility changes.
+                      The experience keeps reclaimed golf balls and their value
+                      proposition visible early so visitors immediately
+                      understand what Elite Ball Co. sells.
                     </p>
                   </div>
                 </article>
@@ -227,14 +233,13 @@ export default function CompassCRMCaseStudy() {
 
                   <div>
                     <h3 className="text-xl font-semibold tracking-[-0.03em]">
-                      Make candidate search operational, not just searchable
+                      Make pricing easy to understand
                     </h3>
 
                     <p className="mt-3 max-w-2xl text-sm leading-7 text-white/45 sm:text-base sm:leading-8">
-                      Candidate information is structured around skills,
-                      keywords, location, and recruiting needs so the database
-                      supports real placement decisions rather than acting as a
-                      passive contact list.
+                      Pricing is presented directly rather than buried behind
+                      unnecessary steps, giving customers a clearer path from
+                      interest to purchase.
                     </p>
                   </div>
                 </article>
@@ -244,13 +249,13 @@ export default function CompassCRMCaseStudy() {
 
                   <div>
                     <h3 className="text-xl font-semibold tracking-[-0.03em]">
-                      Surface priority work
+                      Design for the phone first
                     </h3>
 
                     <p className="mt-3 max-w-2xl text-sm leading-7 text-white/45 sm:text-base sm:leading-8">
-                      Job orders, replacements, candidate activity, and
-                      recruiter assignments are presented in ways that help
-                      users identify what requires attention next.
+                      A straightforward responsive layout ensures golfers can
+                      understand the offer and contact the business without
+                      needing a desktop experience.
                     </p>
                   </div>
                 </article>
@@ -260,13 +265,13 @@ export default function CompassCRMCaseStudy() {
 
                   <div>
                     <h3 className="text-xl font-semibold tracking-[-0.03em]">
-                      Give administrators visibility without slowing recruiters
+                      Leave room for the business to grow
                     </h3>
 
                     <p className="mt-3 max-w-2xl text-sm leading-7 text-white/45 sm:text-base sm:leading-8">
-                      Administrative controls and reporting can sit above the
-                      recruiter workflow while the daily experience remains
-                      focused on candidates, jobs, clients, and placements.
+                      The initial site establishes the brand and customer
+                      journey without forcing unnecessary ecommerce complexity
+                      before the business needs it.
                     </p>
                   </div>
                 </article>
@@ -316,6 +321,16 @@ export default function CompassCRMCaseStudy() {
           </div>
         </section>
 
+        <p className="mt-6 text-sm leading-7 text-white/45">
+          Need a professional website for your business?{" "}
+          <Link
+            href="/services"
+            className="font-semibold text-white/65 underline decoration-white/20 underline-offset-4 transition-colors hover:text-white"
+          >
+            Explore MES website development services.
+          </Link>
+        </p>
+
         {/* CTA */}
         <section className="mes-section border-t border-white/[0.08]">
           <div className="mes-container">
@@ -326,7 +341,8 @@ export default function CompassCRMCaseStudy() {
               </p>
 
               <h2 className="mt-6 text-[clamp(3rem,6vw,5.5rem)] font-semibold leading-[0.94] tracking-[-0.065em]">
-                Let&apos;s build around the way your team actually works.
+                Give your business a digital presence that feels as credible as
+                the work behind it.
               </h2>
 
               <Link
