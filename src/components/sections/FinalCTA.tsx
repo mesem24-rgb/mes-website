@@ -68,6 +68,53 @@ export function FinalCTA() {
             </div>
           </div>
 
+          <div className="mb-10 grid gap-6 border-y border-white/[0.08] py-8 sm:grid-cols-3">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-blue-300/70">
+                01
+              </p>
+
+              <h3 className="mt-3 text-lg font-semibold text-white">
+                Share the need
+              </h3>
+
+              <p className="mt-2 text-sm leading-6 text-white/55">
+                Tell me what you&apos;re trying to build, improve, or figure
+                out.
+              </p>
+            </div>
+
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-blue-300/70">
+                02
+              </p>
+
+              <h3 className="mt-3 text-lg font-semibold text-white">
+                We talk it through
+              </h3>
+
+              <p className="mt-2 text-sm leading-6 text-white/55">
+                The first conversation is about understanding the problem and
+                the business.
+              </p>
+            </div>
+
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-blue-300/70">
+                03
+              </p>
+
+              <h3 className="mt-3 text-lg font-semibold text-white">
+                Define the next step
+              </h3>
+
+              <p className="mt-2 text-sm leading-6 text-white/55">
+                If there&apos;s a good fit, we outline the right scope,
+                priorities, and path forward.
+              </p>
+            </div>
+          </div>
+
           <InquiryForm />
         </div>
       </div>

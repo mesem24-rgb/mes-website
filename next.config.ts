@@ -1,5 +1,16 @@
 import type { NextConfig } from "next";
 
+const isDevelopment = process.env.NODE_ENV === "development";
+
+const scriptSrc = [
+  "'self'",
+  "'unsafe-inline'",
+  ...(isDevelopment ? ["'unsafe-eval'"] : []),
+  "https://www.clarity.ms",
+  "https://scripts.clarity.ms",
+  "https://va.vercel-scripts.com",
+].join(" ");
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
 
@@ -41,7 +52,7 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' https://www.clarity.ms https://scripts.clarity.ms https://va.vercel-scripts.com",
+              `script-src ${scriptSrc}`,
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: blob: https:",
               "font-src 'self' data:",

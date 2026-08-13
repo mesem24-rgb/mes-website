@@ -1,10 +1,12 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { ArrowUpRight, CheckCircle2, LoaderCircle } from "lucide-react";
+import { ArrowUpRight, LoaderCircle } from "lucide-react";
+import { useRouter } from "next/navigation";
+
 import { trackClarityEvent } from "@/lib/clarity";
 
-type FormStatus = "idle" | "submitting" | "success" | "error";
+type FormStatus = "idle" | "submitting" | "error";
 
 type InquiryFormData = {
   name: string;
@@ -12,6 +14,7 @@ type InquiryFormData = {
   company: string;
   phone: string;
   projectType: string;
+  budget: string;
   message: string;
 };
 
@@ -21,6 +24,7 @@ const initialFormData: InquiryFormData = {
   company: "",
   phone: "",
   projectType: "",
+  budget: "",
   message: "",
 };
 
@@ -28,10 +32,14 @@ const inputClasses =
   "w-full border-b border-white/12 bg-transparent px-0 py-4 text-base text-white outline-none transition-colors duration-300 placeholder:text-white/25 focus:border-blue-400";
 
 export function InquiryForm() {
+  const router = useRouter();
+
   const [formData, setFormData] =
     useState<InquiryFormData>(initialFormData);
 
-  const [status, setStatus] = useState<FormStatus>("idle");
+  const [status, setStatus] =
+    useState<FormStatus>("idle");
+
   const [errorMessage, setErrorMessage] = useState("");
 
   function updateField(
@@ -74,8 +82,9 @@ export function InquiryForm() {
 
       trackClarityEvent("inquiry_submitted");
 
-      setStatus("success");
       setFormData(initialFormData);
+
+      router.push("/thank-you");
     } catch (error) {
       setStatus("error");
 
@@ -89,56 +98,6 @@ export function InquiryForm() {
     }
   }
 
-  if (status === "success") {
-  return (
-    <div
-      role="status"
-      className="rounded-2xl border border-blue-400/15 bg-blue-400/[0.04] p-8 sm:p-10"
-    >
-      <div className="flex h-12 w-12 items-center justify-center rounded-full border border-blue-400/20 bg-blue-400/10">
-        <CheckCircle2
-          aria-hidden="true"
-          className="h-5 w-5 text-blue-300"
-        />
-      </div>
-
-      <p className="mt-8 text-xs font-semibold uppercase tracking-[0.18em] text-blue-300/70">
-        Inquiry received
-      </p>
-
-      <h3 className="mt-4 max-w-lg text-3xl font-semibold tracking-[-0.045em] text-white sm:text-4xl">
-        Thanks for reaching out.
-      </h3>
-
-      <p className="mt-5 max-w-xl text-base leading-7 text-white/50">
-        I&apos;ll review what you shared and follow up to learn
-        more about the business, the problem you&apos;re trying
-        to solve, and whether MES is the right fit.
-      </p>
-
-      <div className="mt-8 border-t border-white/[0.08] pt-6">
-        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/25">
-          What happens next
-        </p>
-
-        <p className="mt-3 max-w-xl text-sm leading-6 text-white/45">
-          The first conversation is about understanding the need.
-          You don&apos;t need a finished specification, technical
-          plan, or complete list of requirements.
-        </p>
-      </div>
-
-      <button
-        type="button"
-        onClick={() => setStatus("idle")}
-        className="mt-8 text-sm font-semibold text-white/55 transition-colors hover:text-white"
-      >
-        Send another inquiry
-      </button>
-    </div>
-  );
-}
-
   return (
     <form
       onSubmit={handleSubmit}
@@ -146,7 +105,7 @@ export function InquiryForm() {
     >
       <div className="grid gap-x-8 sm:grid-cols-2">
         <label className="block">
-          <span className="text-xs font-semibold uppercase tracking-[0.16em] text-white/35">
+          <span className="text-xs font-semibold uppercase tracking-[0.16em] text-white/45">
             Name *
           </span>
 
@@ -164,7 +123,7 @@ export function InquiryForm() {
         </label>
 
         <label className="mt-8 block sm:mt-0">
-          <span className="text-xs font-semibold uppercase tracking-[0.16em] text-white/35">
+          <span className="text-xs font-semibold uppercase tracking-[0.16em] text-white/45">
             Email *
           </span>
 
@@ -182,7 +141,7 @@ export function InquiryForm() {
         </label>
 
         <label className="mt-8 block">
-          <span className="text-xs font-semibold uppercase tracking-[0.16em] text-white/35">
+          <span className="text-xs font-semibold uppercase tracking-[0.16em] text-white/45">
             Company
           </span>
 
@@ -199,7 +158,7 @@ export function InquiryForm() {
         </label>
 
         <label className="mt-8 block">
-          <span className="text-xs font-semibold uppercase tracking-[0.16em] text-white/35">
+          <span className="text-xs font-semibold uppercase tracking-[0.16em] text-white/45">
             Phone
           </span>
 
@@ -217,7 +176,7 @@ export function InquiryForm() {
       </div>
 
       <label className="mt-8 block">
-        <span className="text-xs font-semibold uppercase tracking-[0.16em] text-white/35">
+        <span className="text-xs font-semibold uppercase tracking-[0.16em] text-white/45">
           What can MES help with? *
         </span>
 
@@ -244,24 +203,15 @@ export function InquiryForm() {
             Improve an existing system
           </option>
 
-          <option
-            value="website"
-            className="bg-[#070b12]"
-          >
+          <option value="website" className="bg-[#070b12]">
             Business website
           </option>
 
-          <option
-            value="workflow"
-            className="bg-[#070b12]"
-          >
+          <option value="workflow" className="bg-[#070b12]">
             Workflow or automation
           </option>
 
-          <option
-            value="direction"
-            className="bg-[#070b12]"
-          >
+          <option value="direction" className="bg-[#070b12]">
             Help determining the right direction
           </option>
 
@@ -272,7 +222,7 @@ export function InquiryForm() {
       </label>
 
       <label className="mt-8 block">
-        <span className="text-xs font-semibold uppercase tracking-[0.16em] text-white/35">
+        <span className="text-xs font-semibold uppercase tracking-[0.16em] text-white/45">
           Tell me about the need *
         </span>
 
@@ -288,6 +238,44 @@ export function InquiryForm() {
         />
       </label>
 
+      <label className="mt-8 block">
+        <span className="text-xs font-semibold uppercase tracking-[0.16em] text-white/45">
+          Project range
+        </span>
+
+        <select
+          value={formData.budget}
+          onChange={(event) =>
+            updateField("budget", event.target.value)
+          }
+          className={`${inputClasses} appearance-none`}
+        >
+          <option value="" className="bg-[#070b12]">
+            Not sure yet
+          </option>
+
+          <option value="under-2500" className="bg-[#070b12]">
+            Under $2,500
+          </option>
+
+          <option value="2500-5000" className="bg-[#070b12]">
+            $2,500–$5,000
+          </option>
+
+          <option value="5000-10000" className="bg-[#070b12]">
+            $5,000–$10,000
+          </option>
+
+          <option value="10000-25000" className="bg-[#070b12]">
+            $10,000–$25,000
+          </option>
+
+          <option value="25000-plus" className="bg-[#070b12]">
+            $25,000+
+          </option>
+        </select>
+      </label>
+
       {status === "error" && (
         <p
           role="alert"
@@ -298,7 +286,7 @@ export function InquiryForm() {
       )}
 
       <div className="mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-        <p className="max-w-md text-xs leading-5 text-white/30">
+        <p className="max-w-md text-xs leading-5 text-white/45">
           Submitting this form does not create a contract or
           commitment. It simply begins the conversation.
         </p>
@@ -306,7 +294,7 @@ export function InquiryForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="mes-button mes-button-primary group justify-center disabled:cursor-not-allowed disabled: bg-blue-500/60 disabled:opacity-80"
+          className="mes-button mes-button-primary group justify-center disabled:cursor-not-allowed disabled:bg-blue-500/60 disabled:opacity-80"
         >
           {status === "submitting" ? (
             <>
@@ -319,6 +307,7 @@ export function InquiryForm() {
           ) : (
             <>
               Send inquiry
+
               <ArrowUpRight
                 aria-hidden="true"
                 className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
