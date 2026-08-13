@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 import { SiteFrame } from "@/components/layout/SiteFrame";
 import {
   ArrowLeft,
@@ -15,27 +16,28 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Custom Software & Website Development | Gulfport, MS",
+
   description:
-    "MES helps businesses build new software, improve existing systems, and clarify the right technology direction through custom websites, workflow applications, internal tools, and software consulting.",
+    "MES provides custom software development, business websites, workflow automation, CRM systems, and internal business tools for small and growing businesses in Gulfport and across the Mississippi Gulf Coast.",
 
   alternates: {
     canonical: "/services",
   },
 
   openGraph: {
-    title: "MES Services | Software Built Around Your Business",
+    title: "Custom Software & Website Development | MES",
     description:
-      "Custom websites, workflow applications, internal business tools, and practical software guidance built around the way your business works.",
+      "Custom websites, business applications, workflow automation, CRM systems, and internal tools built around the way your business works.",
     url: "/services",
     type: "website",
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "MES Services | Software Built Around Your Business",
+    title: "Custom Software & Website Development | MES",
     description:
-      "Custom websites, workflow applications, internal business tools, and practical software guidance.",
+      "Custom websites and business software built around real business workflows.",
   },
 };
 
@@ -47,11 +49,11 @@ const servicePaths = [
     description:
       "Turn an idea, manual process, or business need into a focused digital product designed around how the work actually happens.",
     services: [
-      "Custom business applications",
+      "Custom software development",
       "Workflow platforms",
       "Internal tools",
       "Client and team portals",
-      "CRM-style systems",
+      "Custom CRM systems",
       "New product MVPs",
     ],
   },
@@ -92,7 +94,7 @@ const serviceTypes = [
     icon: Globe2,
     title: "Business websites",
     description:
-      "Professional websites designed to establish credibility, explain the offer clearly, and give customers an easy next step.",
+      "Custom business websites designed to establish credibility, improve local visibility, explain your services clearly, and turn visitors into customer inquiries.",
   },
   {
     icon: LayoutDashboard,
@@ -149,9 +151,49 @@ const process = [
   },
 ];
 
+const servicesSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "MES Software Development Services",
+  serviceType: [
+    "Custom Software Development",
+    "Website Development",
+    "Web Application Development",
+    "Workflow Automation",
+    "CRM Development",
+    "Internal Business Tools",
+    "Software Consulting",
+  ],
+  provider: {
+    "@type": "Organization",
+    name: "MES",
+    url: "https://www.mes-solutions.dev",
+  },
+  areaServed: [
+    {
+      "@type": "City",
+      name: "Gulfport",
+    },
+    {
+      "@type": "AdministrativeArea",
+      name: "Mississippi Gulf Coast",
+    },
+  ],
+  description:
+    "MES provides custom software development, business websites, workflow automation, CRM systems, internal tools, and software consulting for small and growing businesses.",
+  url: "https://www.mes-solutions.dev/services",
+};
+
 export default function ServicesPage() {
   return (
     <SiteFrame>
+      <Script
+        id="services-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(servicesSchema),
+        }}
+      />
       <main className="min-h-screen bg-[#070b12] pt-20 text-white">
         {/* HERO */}
         <section className="mes-section">
@@ -178,9 +220,11 @@ export default function ServicesPage() {
 
               <div className="max-w-xl lg:justify-self-end">
                 <p className="text-lg leading-8 text-white/52">
-                  MES helps businesses turn unclear processes, disconnected
-                  tools, and new ideas into focused digital experiences that are
-                  easier to understand, use, and grow.
+                  MES provides custom website and software development for small
+                  and growing businesses in Gulfport and across the Mississippi
+                  Gulf Coast, turning disconnected tools, manual processes, and
+                  new ideas into focused digital solutions that are easier to
+                  use and grow.
                 </p>
 
                 <Link
