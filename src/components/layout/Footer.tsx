@@ -37,7 +37,7 @@ export function Footer() {
 
       <div className="mes-container relative">
         {/* Main footer */}
-        <div className="grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_0.7fr_0.7fr] lg:gap-16 lg:py-20">
+        <div className="grid gap-12 py-16 lg:grid-cols-[1.4fr_0.7fr_0.7fr] lg:gap-16 lg:py-20">
           {/* Brand */}
           <div>
             <Link
@@ -150,7 +150,7 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="flex flex-col gap-4 border-t border-white/[0.08] py-6 text-xs text-white/35 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-4 border-t border-white/[0.08] py-6 text-xs text-white/35 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex items-center gap-3">
             <p>© {currentYear} MES. All rights reserved.</p>
 
@@ -167,7 +167,7 @@ export function Footer() {
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <span>Built by Michael Sullivan</span>
 
-            <span className="hidden h-1 w-1 rounded-full bg-white/20 sm:block" />
+            <span className="hidden h-1 w-1 rounded-full bg-white/20 lg:block" />
 
             <span>Gulfport, Mississippi</span>
           </div>

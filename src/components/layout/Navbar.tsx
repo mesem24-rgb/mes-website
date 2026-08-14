@@ -273,7 +273,7 @@ export function Navbar() {
           {/* SECTION: Desktop navigation */}
           <nav
             aria-label="Primary navigation"
-            className="hidden items-center gap-8 lg:flex"
+            className="hidden items-center gap-7 xl:flex"
           >
             {navigationItems.map((item) => {
               const isActive =
@@ -321,7 +321,7 @@ export function Navbar() {
             <Link
               href="/#contact"
               onClick={handleContactClick}
-              className="mes-button mes-button-secondary group hidden sm:inline-flex"
+              className="mes-button mes-button-secondary group hidden md:inline-flex"
             >
               Let&apos;s talk
             </Link>
@@ -332,7 +332,7 @@ export function Navbar() {
               aria-expanded={isMenuOpen}
               aria-controls="mobile-navigation"
               onClick={() => setIsMenuOpen((current) => !current)}
-              className="mes-icon-surface relative z-50 flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] transition-all hover:border-blue-400/40 hover:bg-blue-500/10 lg:hidden"
+              className="mes-icon-surface relative z-50 flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] transition-all hover:border-blue-400/40 hover:bg-blue-500/10 xl:hidden"
             >
               {isMenuOpen ? (
                 <X aria-hidden="true" className="h-5 w-5" />
@@ -348,7 +348,7 @@ export function Navbar() {
       <div
         id="mobile-navigation"
         className={[
-          "fixed inset-0 z-40 overflow-y-auto bg-[#070b12] transition-all duration-500 lg:hidden",
+          "fixed inset-0 z-40 overflow-y-auto bg-[#070b12] transition-all duration-500 xl:hidden",
           isMenuOpen
             ? "visible opacity-100"
             : "invisible pointer-events-none opacity-0",
