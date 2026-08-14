@@ -3,18 +3,17 @@ import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 
 const navigation = [
-  { label: "Journey", href: "#journey" },
-  { label: "Philosophy", href: "#philosophy" },
-  { label: "Approach", href: "#approach" },
-  { label: "Products", href: "#products" },
-  { label: "Featured Work", href: "#featured-work" },
-  { label: "Contact", href: "#contact" },
+  { label: "Journey", href: "/#journey" },
+  { label: "Services", href: "/services" },
+  { label: "Work", href: "/work" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 const resources = [
   {
     label: "Portfolio",
-    href: "https://michaelsullivan-portfolio-next-2.vercel.app/",
+    href: "https://portfolio.mes-solutions.dev",
   },
   {
     label: "GitHub",
@@ -37,10 +36,12 @@ export function Footer() {
       />
 
       <div className="mes-container relative">
-        <div className="grid gap-16 py-20 sm:py-24 lg:grid-cols-[1.2fr_0.8fr_0.8fr_1fr] lg:gap-12 lg:py-28">
+        {/* Main footer */}
+        <div className="grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_0.7fr_0.7fr] lg:gap-16 lg:py-20">
+          {/* Brand */}
           <div>
             <Link
-              href="#"
+              href="/"
               aria-label="MES home"
               className="group inline-flex items-center"
             >
@@ -51,28 +52,38 @@ export function Footer() {
 
                 <span
                   aria-hidden="true"
-                  className="absolute -right-3 top-0 h-1.5 w-1.5 rounded-full bg-blue-400 shadow-[0_0_14px_rgba(96,165,250,0.85)] transition-all duration-300 group-hover:scale-125 group-hover:shadow-[0_0_20px_rgba(96,165,250,1)]"
+                  className="absolute -right-3 top-0 h-1.5 w-1.5 rounded-full bg-blue-400 shadow-[0_0_14px_rgba(96,165,250,0.85)] transition-all duration-300 group-hover:scale-125"
                 />
               </span>
             </Link>
 
-            <p className="mt-6 max-w-sm text-3xl font-semibold leading-[1.08] tracking-[-0.045em] text-white sm:text-4xl">
-              Meaningful.
+            <p className="mt-6 max-w-md text-2xl font-semibold leading-[1.1] tracking-[-0.04em] text-white sm:text-3xl">
+              Software that fits
               <br />
-              Empowering.
-              <br />
-              Solutions.
+              the way you work.
             </p>
 
-            <p className="mt-6 max-w-sm text-sm leading-7 text-white/60">
-              Helping organizations build thoughtful software that fits the way
-              they work.
+            <p className="mt-5 max-w-md text-sm leading-7 text-white/50">
+              Meaningful. Empowering. Solutions.
             </p>
+
+            <Link
+              href="/#journey"
+              className="group mt-7 inline-flex items-center gap-2 text-sm font-semibold text-white/65 transition-colors hover:text-white"
+            >
+              Find your starting point
+
+              <ArrowUpRight
+                aria-hidden="true"
+                className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
+            </Link>
           </div>
 
+          {/* Navigation */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/45">
-              Navigation
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/35">
+              Explore
             </p>
 
             <nav
@@ -83,7 +94,7 @@ export function Footer() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="group inline-flex w-fit items-center gap-2 text-sm text-white/48 transition-colors duration-300 hover:text-white"
+                  className="group inline-flex w-fit items-center gap-2 text-sm text-white/50 transition-colors duration-300 hover:text-white"
                 >
                   {item.label}
 
@@ -96,9 +107,10 @@ export function Footer() {
             </nav>
           </div>
 
+          {/* Connect */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/45">
-              Resources
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/35">
+              Connect
             </p>
 
             <div className="mt-6 flex flex-col gap-4">
@@ -108,66 +120,54 @@ export function Footer() {
                   href={item.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="group inline-flex w-fit items-center gap-2 text-sm text-white/48 transition-colors duration-300 hover:text-white"
+                  className="group inline-flex w-fit items-center gap-2 text-sm text-white/50 transition-colors duration-300 hover:text-white"
                 >
                   {item.label}
 
                   <ArrowUpRight
                     aria-hidden="true"
-                    className="h-3.5 w-3.5 text-white/22 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-blue-300"
+                    className="h-3.5 w-3.5 text-white/25 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-blue-300"
                   />
                 </a>
               ))}
-            </div>
-          </div>
 
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/45">
-              Contact
-            </p>
-
-            <div className="mt-6 space-y-4">
               <a
                 href="mailto:contact@mes-solutions.dev"
-                className="block text-sm text-white/48 transition-colors duration-300 hover:text-white"
+                className="mt-2 text-sm text-white/50 transition-colors duration-300 hover:text-white"
               >
                 contact@mes-solutions.dev
               </a>
 
               <a
                 href="tel:+12282092005"
-                className="block text-sm text-white/48 transition-colors duration-300 hover:text-white"
+                className="text-sm text-white/50 transition-colors duration-300 hover:text-white"
               >
                 228-209-2005
               </a>
             </div>
-
-            <Link
-              href="#contact"
-              className="group mt-8 inline-flex items-center gap-3 border-b border-white/15 pb-1.5 text-sm font-semibold text-white/65 transition-all duration-300 hover:border-blue-400/20 hover:text-white"
-            >
-              Start a conversation
-              <ArrowUpRight
-                aria-hidden="true"
-                className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-              />
-            </Link>
           </div>
         </div>
 
-        <div className="flex flex-col gap-5 border-t border-white/[0.08] py-7 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} MES. All rights reserved.</p>
-          <Image
-            src="/icons/ichthus-footer-mark.png"
-            alt=""
-            width={28}
-            height={13}
-            aria-hidden="true"
-            className="h-auto w-7 opacity-20"
-          />
+        {/* Bottom bar */}
+        <div className="flex flex-col gap-4 border-t border-white/[0.08] py-6 text-xs text-white/35 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-center gap-3">
+            <p>© {currentYear} MES. All rights reserved.</p>
+
+            <Image
+              src="/icons/ichthus-footer-mark.png"
+              alt=""
+              width={28}
+              height={13}
+              aria-hidden="true"
+              className="h-auto w-7 opacity-20"
+            />
+          </div>
+
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <span>Built by Michael Sullivan</span>
+
             <span className="hidden h-1 w-1 rounded-full bg-white/20 sm:block" />
+
             <span>Gulfport, Mississippi</span>
           </div>
         </div>
