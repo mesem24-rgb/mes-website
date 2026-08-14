@@ -1,10 +1,21 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
+import dynamic from "next/dynamic";
+
 import { ChoiceExperience } from "@/components/layout/ChoiceExperience";
 
 import { Hero } from "@/components/sections/Hero";
-import { FinalCTA } from "@/components/sections/FinalCTA";
+
+const FinalCTA = dynamic(
+  () =>
+    import("@/components/sections/FinalCTA").then(
+      (module) => module.FinalCTA,
+    ),
+  {
+    loading: () => null,
+  },
+);
 
 export default function HomePage() {
   return (
