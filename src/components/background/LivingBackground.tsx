@@ -354,14 +354,23 @@ export function LivingBackground({ mode }: LivingBackgroundProps) {
       drawPoints();
     };
 
-    const animate = () => {
+    let lastFrameTime = 0;
+    const FRAME_INTERVAL = 1000 / 30;
+
+    const animate = (timestamp: number) => {
+      animationFrameId = window.requestAnimationFrame(animate);
+
+      if (timestamp - lastFrameTime < FRAME_INTERVAL) {
+        return;
+      }
+
+      lastFrameTime = timestamp;
+
       if (!shouldReduceMotion) {
         updatePoints();
       }
 
       draw();
-
-      animationFrameId = window.requestAnimationFrame(animate);
     };
 
     resizeCanvas();
