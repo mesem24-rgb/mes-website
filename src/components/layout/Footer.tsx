@@ -72,7 +72,6 @@ export function Footer() {
               className="group mt-7 inline-flex items-center gap-2 text-sm font-semibold text-white/65 transition-colors hover:text-white"
             >
               Find your starting point
-
               <ArrowUpRight
                 aria-hidden="true"
                 className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -132,7 +131,9 @@ export function Footer() {
               ))}
 
               <a
-                href="mailto:contact@mes-solutions.dev"
+                href="mailto:contact@mes-solutions.dev?subject=MES%20Project%20Inquiry"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-2 text-sm text-white/50 transition-colors duration-300 hover:text-white"
               >
                 contact@mes-solutions.dev

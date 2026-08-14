@@ -46,6 +46,8 @@ export function FinalCTA() {
 
               <a
                 href="mailto:contact@mes-solutions.dev?subject=MES%20Project%20Inquiry"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex items-center gap-4 text-sm text-white/50 transition-all duration-300 hover:text-white"
               >
                 <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 transition-colors duration-300 group-hover:border-blue-400/20 group-hover:bg-blue-500/10">
