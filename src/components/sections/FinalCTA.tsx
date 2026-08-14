@@ -58,14 +58,14 @@ export function FinalCTA() {
               </a>
 
               <a
-                href="tel:+12282092005"
+                href="tel:+16019095858"
                 className="group flex items-center gap-4 text-sm text-white/50 transition-all duration-300 hover:text-white"
               >
                 <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 transition-colors duration-300 group-hover:border-blue-400/20 group-hover:bg-blue-500/10">
                   <Phone aria-hidden="true" className="h-4 w-4" />
                 </span>
 
-                <span>(228) 209-2005</span>
+                <span>(601) 909-5858</span>
               </a>
             </div>
           </div>
