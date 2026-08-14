@@ -13,7 +13,9 @@ import type { ExperienceMode } from "@/types";
 
 type ChoiceSectionProps = {
   activeMode: ExperienceMode;
+  selectedMode: Exclude<ExperienceMode, "idle"> | null;
   onModeChange: (mode: ExperienceMode) => void;
+  onSelectMode: (mode: Exclude<ExperienceMode, "idle">) => void;
 };
 
 type Choice = {
@@ -22,7 +24,6 @@ type Choice = {
   title: string;
   description: string;
   outcome: string;
-  href: string;
   icon: LucideIcon;
 };
 
@@ -34,7 +35,6 @@ const choices: Choice[] = [
     description:
       "Turn an idea, opportunity, or operational need into software designed around the way your organization actually works.",
     outcome: "From early direction to a working product.",
-    href: "#contact",
     icon: Blocks,
   },
   {
@@ -44,7 +44,6 @@ const choices: Choice[] = [
     description:
       "Modernize an aging system, simplify a complicated workflow, or improve an experience that is creating unnecessary friction.",
     outcome: "Better tools without starting over blindly.",
-    href: "#contact",
     icon: RefreshCw,
   },
   {
@@ -54,14 +53,15 @@ const choices: Choice[] = [
     description:
       "Clarify the problem, evaluate the options, and create a practical technology path before committing resources to a build.",
     outcome: "Confident decisions before development begins.",
-    href: "#contact",
     icon: Compass,
   },
 ];
 
 export function ChoiceSection({
   activeMode,
+  selectedMode,
   onModeChange,
+  onSelectMode,
 }: ChoiceSectionProps) {
   const hasSelection = activeMode !== "idle";
 
@@ -153,7 +153,7 @@ export function ChoiceSection({
                 tabIndex={0}
                 onMouseEnter={() => onModeChange(choice.mode)}
                 onFocus={() => onModeChange(choice.mode)}
-                onClick={() => onModeChange(choice.mode)}
+                onClick={() => onSelectMode(choice.mode)}
                 className={[
                   "group relative flex min-h-[31rem] cursor-pointer flex-col overflow-hidden px-1 py-10 transition-all duration-500",
                   "border-white/[0.08]",
@@ -226,19 +226,25 @@ export function ChoiceSection({
                       {choice.outcome}
                     </p>
 
-                    <Link
-                      href={choice.href}
+                    <button
+                      type="button"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        onSelectMode(choice.mode);
+                      }}
                       className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-white/65 transition-colors duration-300 hover:text-white focus-visible:text-white"
                     >
-                      Explore this path
+                      Choose this path
                       <ArrowUpRight
                         aria-hidden="true"
                         className={[
                           "h-4 w-4 transition-transform duration-300",
-                          isActive ? "-translate-y-0.5 translate-x-0.5" : "",
+                          selectedMode === choice.mode
+                            ? "-translate-y-0.5 translate-x-0.5"
+                            : "",
                         ].join(" ")}
                       />
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </article>
@@ -254,7 +260,7 @@ export function ChoiceSection({
           </p>
 
           <Link
-            href="#philosophy"
+            href="/about"
             className="group inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-white/60 transition-colors duration-300 hover:text-white"
           >
             How MES approaches the work

@@ -13,24 +13,14 @@ const navigationItems = [
     sectionId: "journey",
   },
   {
-    label: "Philosophy",
-    href: "/#philosophy",
-    sectionId: "philosophy",
-  },
-  {
-    label: "Approach",
-    href: "/#approach",
-    sectionId: "approach",
-  },
-  {
     label: "Services",
     href: "/services",
     sectionId: "",
   },
   {
     label: "Work",
-    href: "/#featured-work",
-    sectionId: "featured-work",
+    href: "/work",
+    sectionId: "",
   },
   {
     label: "About",

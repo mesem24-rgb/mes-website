@@ -37,6 +37,8 @@ export async function POST(request: Request) {
       projectType,
       budget,
       message,
+      journeyPath,
+      journeyFocus,
     } = body;
 
     const budgetLabels: Record<string, string> = {
@@ -48,8 +50,7 @@ export async function POST(request: Request) {
       "25000-plus": "$25,000+",
     };
 
-    const budgetLabel =
-      budgetLabels[budget] || "Not specified";
+    const budgetLabel = budgetLabels[budget] || "Not specified";
 
     const projectTypeLabels: Record<string, string> = {
       "new-product": "Build something new",
@@ -60,8 +61,7 @@ export async function POST(request: Request) {
       other: "Something else",
     };
 
-    const projectTypeLabel =
-      projectTypeLabels[projectType] || projectType;
+    const projectTypeLabel = projectTypeLabels[projectType] || projectType;
 
     const { error } = await resend.emails.send({
       from: fromEmail,
@@ -69,24 +69,32 @@ export async function POST(request: Request) {
       replyTo: email,
       subject: `New MES Inquiry from ${name}`,
       html: `
-        <h2>New MES Inquiry</h2>
+  <h2>New MES Inquiry</h2>
 
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Company:</strong> ${
-          company || "Not provided"
-        }</p>
-        <p><strong>Phone:</strong> ${
-          phone || "Not provided"
-        }</p>
-        <p><strong>Project Type:</strong> ${projectTypeLabel}</p>
-        <p><strong>Project Range:</strong> ${budgetLabel}</p>
+  <p><strong>Name:</strong> ${name}</p>
+  <p><strong>Email:</strong> ${email}</p>
+  <p><strong>Company:</strong> ${company || "Not provided"}</p>
+  <p><strong>Phone:</strong> ${phone || "Not provided"}</p>
 
+  <hr />
+
+  ${
+    journeyPath
+      ? `
+        <h3>MES Website Journey</h3>
+        <p><strong>Starting point:</strong> ${journeyPath}</p>
+        <p><strong>Focus:</strong> ${journeyFocus || "Not provided"}</p>
         <hr />
+      `
+      : ""
+  }
 
-        <p><strong>Project details:</strong></p>
-        <p>${message}</p>
-      `,
+  <p><strong>Project Type:</strong> ${projectType}</p>
+  <p><strong>Project Range:</strong> ${budget || "Not provided"}</p>
+
+  <h3>Project Need</h3>
+  <p>${message}</p>
+`,
     });
 
     if (error) {

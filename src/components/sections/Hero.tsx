@@ -1,5 +1,4 @@
 import { ArrowDown, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/Button";
 import { TrackedLink } from "@/components/analytics/TrackedLink";
 
 export function Hero() {
@@ -45,7 +44,7 @@ export function Hero() {
             <span>Meaningful. Empowering. Solutions.</span>
           </div>
 
-          <h1 className="mt-6 max-w-[10ch] text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] font-semibold leading-[0.9] tracking-[-0.065em] text-white">
+          <h1 className="mt-6 max-w-[10ch] text-5xl font-semibold leading-[0.9] tracking-[-0.065em] text-white sm:text-6xl md:text-7xl lg:text-[6.5rem]">
             Software
             <br />
             <span className="text-white/90">that fits</span>
@@ -57,28 +56,21 @@ export function Hero() {
             </span>
           </h1>
 
-          <div className="mt-10 grid max-w-5xl gap-8 lg:grid-cols-[minmax(0,34rem)_auto] lg:items-end lg:gap-8">
+          <div className="mt-10 max-w-2xl">
             <p className="mes-body-large">
-              MES designs custom websites and workflow software for small and
-              growing businesses. Based in Gulfport and serving the Mississippi
-              Gulf Coast, we shape every solution around the people, processes,
-              and decisions that make your business unique.
+              Start with what you&apos;re trying to accomplish. MES helps shape
+              the right website, software, workflow, or direction around the way
+              your business actually works.
             </p>
 
-            <div className="flex flex-col items-start gap-4 sm:flex-row lg:justify-self-start">
-              <TrackedLink
-                href="/#journey"
-                eventName="hero_cta_clicked"
-                className="mes-button mes-button-primary group"
-              >
-                Tell us how you work
-                <ArrowRight aria-hidden="true" className="h-4 w-4" />
-              </TrackedLink>
-
-              <Button href="#approach" variant="secondary">
-                Explore our approach
-              </Button>
-            </div>
+            <TrackedLink
+              href="/#journey"
+              eventName="hero_cta_clicked"
+              className="mes-button mes-button-primary group mt-8"
+            >
+              Find your starting point
+              <ArrowRight aria-hidden="true" className="h-4 w-4" />
+            </TrackedLink>
           </div>
         </div>
       </div>
@@ -88,7 +80,7 @@ export function Hero() {
         href="#journey"
         className="group absolute bottom-7 right-[var(--mes-container-padding)] z-10 hidden items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-white/40 transition-colors duration-300 hover:text-white xl:flex"
       >
-        Begin the story
+        Start here
         <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 transition-all duration-300 group-hover:border-white/20 group-hover:bg-white/[0.05]">
           <ArrowDown
             aria-hidden="true"
