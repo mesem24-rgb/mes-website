@@ -1,11 +1,10 @@
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
-
 import dynamic from "next/dynamic";
 
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 import { ChoiceExperience } from "@/components/layout/ChoiceExperience";
-
 import { Hero } from "@/components/sections/Hero";
+import { PhilosophySection } from "@/components/sections/PhilosophySection";
 
 const FinalCTA = dynamic(
   () =>
@@ -30,9 +29,13 @@ export default function HomePage() {
       {/* INTERACTIVE STARTING POINT */}
       <ChoiceExperience />
 
+      {/* PHILOSOPHY */}
+      <div className="relative z-10">
+        <PhilosophySection />
+      </div>
+
       {/* PROOF */}
       <div className="relative z-10">
-
         {/* CONVERSATION */}
         <FinalCTA />
 

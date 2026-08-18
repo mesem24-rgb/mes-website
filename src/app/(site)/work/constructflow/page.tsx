@@ -1,7 +1,7 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
-import type { Metadata } from "next";
 import { SiteFrame } from "@/components/layout/SiteFrame";
 
 export const metadata: Metadata = {
@@ -60,10 +60,11 @@ export default function ConstructFlowCaseStudy() {
   return (
     <SiteFrame>
       <main className="min-h-screen bg-[#070b12] text-white">
+        {/* HERO */}
         <section className="mes-section">
           <div className="mes-container">
             <Link
-              href="/#featured-work"
+              href="/work#featured-work"
               className="inline-flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-white"
             >
               <ArrowLeft className="h-4 w-4" />
@@ -116,6 +117,7 @@ export default function ConstructFlowCaseStudy() {
                 className="h-auto w-full"
                 priority
               />
+
               <div className="grid border-x border-b border-white/[0.08] sm:grid-cols-3">
                 <div className="border-b border-white/[0.08] px-6 py-5 sm:border-b-0 sm:border-r">
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/25">
@@ -146,8 +148,14 @@ export default function ConstructFlowCaseStudy() {
           </div>
         </section>
 
-        <section className="mes-section border-t border-white/[0.08]">
-          <div className="mes-container grid gap-14 lg:grid-cols-2 lg:gap-24">
+        {/* CHALLENGE */}
+        <section className="mes-section relative overflow-hidden border-t border-white/[0.08] bg-[#252A30]/80">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -left-40 top-0 h-[30rem] w-[30rem] rounded-full bg-blue-500/[0.04] blur-[140px]"
+          />
+
+          <div className="mes-container relative grid gap-14 lg:grid-cols-2 lg:gap-24">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-300/65">
                 The challenge
@@ -167,6 +175,7 @@ export default function ConstructFlowCaseStudy() {
           </div>
         </section>
 
+        {/* SOLUTION */}
         <section className="mes-section border-t border-white/[0.08]">
           <div className="mes-container grid gap-14 lg:grid-cols-2 lg:gap-24">
             <div>
@@ -188,8 +197,14 @@ export default function ConstructFlowCaseStudy() {
           </div>
         </section>
 
-        <section className="mes-section border-t border-white/[0.08]">
-          <div className="mes-container">
+        {/* PRODUCT DECISIONS */}
+        <section className="mes-section relative overflow-hidden border-t border-white/[0.08] bg-[#252A30]/80">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-40 top-20 h-[30rem] w-[30rem] rounded-full bg-blue-500/[0.04] blur-[140px]"
+          />
+
+          <div className="mes-container relative">
             <div className="grid gap-14 lg:grid-cols-[0.75fr_1.25fr] lg:gap-24">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-300/65">
@@ -272,6 +287,7 @@ export default function ConstructFlowCaseStudy() {
           </div>
         </section>
 
+        {/* CAPABILITIES */}
         <section className="mes-section border-t border-white/[0.08]">
           <div className="mes-container">
             <div className="grid gap-14 lg:grid-cols-2 lg:gap-24">
@@ -322,6 +338,7 @@ export default function ConstructFlowCaseStudy() {
           </Link>
         </p>
 
+        {/* CTA */}
         <section className="mes-section border-t border-white/[0.08]">
           <div className="mes-container">
             <div className="max-w-3xl">

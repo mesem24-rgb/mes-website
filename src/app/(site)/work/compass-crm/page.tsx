@@ -65,7 +65,7 @@ export default function CompassCRMCaseStudy() {
         <section className="mes-section">
           <div className="mes-container">
             <Link
-              href="/#featured-work"
+              href="/work#featured-work"
               className="inline-flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-white"
             >
               <ArrowLeft className="h-4 w-4" />
@@ -149,8 +149,13 @@ export default function CompassCRMCaseStudy() {
         </section>
 
         {/* CHALLENGE */}
-        <section className="mes-section border-t border-white/[0.08]">
-          <div className="mes-container grid gap-14 lg:grid-cols-2 lg:gap-24">
+        <section className="mes-section relative overflow-hidden border-t border-white/[0.08] bg-[#252A30]/80">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -left-40 top-0 h-[30rem] w-[30rem] rounded-full bg-blue-500/[0.04] blur-[140px]"
+          />
+
+          <div className="mes-container relative grid gap-14 lg:grid-cols-2 lg:gap-24">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-300/65">
                 The challenge
@@ -194,8 +199,13 @@ export default function CompassCRMCaseStudy() {
         </section>
 
         {/* PRODUCT DECISIONS */}
-        <section className="mes-section border-t border-white/[0.08]">
-          <div className="mes-container">
+        <section className="mes-section relative overflow-hidden border-t border-white/[0.08] bg-[#252A30]/80">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-40 top-20 h-[30rem] w-[30rem] rounded-full bg-blue-500/[0.04] blur-[140px]"
+          />
+
+          <div className="mes-container relative">
             <div className="grid gap-14 lg:grid-cols-[0.75fr_1.25fr] lg:gap-24">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-300/65">

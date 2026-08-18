@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
-
 import { SiteFrame } from "@/components/layout/SiteFrame";
+import { FeaturedWork } from "@/components/sections/FeaturedWork";
 
 export const metadata: Metadata = {
   title: "Selected Work",
@@ -23,35 +22,7 @@ export const metadata: Metadata = {
   },
 };
 
-const projects = [
-  {
-    name: "Compass CRM",
-    category: "Recruiting operations platform",
-    description:
-      "Custom recruiting software designed around candidate management, job orders, recruiter ownership, client relationships, and pipeline visibility.",
-    image: "/images/products/compassCRM.jpg",
-    imageAlt: "Compass CRM recruiting operations dashboard",
-    href: "/work/compass-crm",
-  },
-  {
-    name: "ConstructFlow",
-    category: "Construction management software",
-    description:
-      "A custom construction operations platform for projects, daily logs, RFIs, change orders, documents, tasks, and field activity.",
-    image: "/images/products/constructFlow.jpg",
-    imageAlt: "ConstructFlow construction management dashboard",
-    href: "/work/constructflow",
-  },
-  {
-    name: "Elite Ball Co.",
-    category: "Small-business website",
-    description:
-      "A focused responsive website designed to establish credibility, present products clearly, communicate pricing, and create an easy customer journey.",
-    image: "/images/products/elite-ball-co.jpg",
-    imageAlt: "Elite Ball Co. small-business website",
-    href: "/work/elite-ball-co",
-  },
-];
+
 
 export default function WorkPage() {
   return (
@@ -90,58 +61,7 @@ export default function WorkPage() {
             </div>
           </div>
         </section>
-
-        {/* PROJECTS */}
-        <section className="border-t border-white/[0.08]">
-          <div className="mes-container">
-            <div className="divide-y divide-white/[0.08]">
-              {projects.map((project, index) => (
-                <article
-                  key={project.name}
-                  className="grid gap-10 py-16 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-20 lg:py-24"
-                >
-                  <Link
-                    href={project.href}
-                    className={[
-                      "group relative block overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02]",
-                      index % 2 === 1 ? "lg:order-2" : "",
-                    ].join(" ")}
-                  >
-                    <Image
-                      src={project.image}
-                      alt={project.imageAlt}
-                      width={1440}
-                      height={900}
-                      className="h-auto w-full transition-transform duration-700 group-hover:scale-[1.02]"
-                    />
-                  </Link>
-
-                  <div className={index % 2 === 1 ? "lg:order-1" : ""}>
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-300/65">
-                      0{index + 1} · {project.category}
-                    </p>
-
-                    <h2 className="mt-5 text-[clamp(2.75rem,5vw,5rem)] font-semibold leading-[0.95] tracking-[-0.06em]">
-                      {project.name}
-                    </h2>
-
-                    <p className="mt-6 max-w-xl text-base leading-8 text-white/52">
-                      {project.description}
-                    </p>
-
-                    <Link
-                      href={project.href}
-                      className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-white/65 transition-colors hover:text-white"
-                    >
-                      View case study
-                      <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                    </Link>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
+        <FeaturedWork />
 
         {/* CTA */}
         <section className="mes-section border-t border-white/[0.08]">

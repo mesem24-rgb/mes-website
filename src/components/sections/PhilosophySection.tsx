@@ -1,174 +1,110 @@
-"use client";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
-import { useState } from "react";
-
-type Principle = {
-  number: string;
-  title: string;
-  description: string;
-};
-
-const principles: Principle[] = [
-  {
-    number: "01",
-    title: "Understand",
-    description:
-      "Before recommending technology, we learn how the organization works, where friction exists, and what success should actually look like.",
-  },
-  {
-    number: "02",
-    title: "Simplify",
-    description:
-      "Good software should remove unnecessary steps, clarify decisions, and make important work easier to understand and complete.",
-  },
-  {
-    number: "03",
-    title: "Empower",
-    description:
-      "The people using the system should feel more capable and more confident—not more dependent on the technology surrounding them.",
-  },
-  {
-    number: "04",
-    title: "Evolve",
-    description:
-      "A useful product should support the organization today while remaining flexible enough to grow with what comes next.",
-  },
-];
+const principles = ["Understand", "Simplify", "Empower", "Evolve"];
 
 export function PhilosophySection() {
-  const [activePrinciple, setActivePrinciple] = useState(0);
-
   return (
     <section
       id="philosophy"
       aria-labelledby="philosophy-heading"
-      className="mes-section relative overflow-hidden"
+      className="relative overflow-hidden bg-[#252A30]/80 py-24 text-[#F4F6F8] sm:py-28 lg:py-36"
     >
+      {/* Subtle MES atmosphere */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"
+        className="pointer-events-none absolute -left-40 top-0 h-[34rem] w-[34rem] rounded-full bg-blue-500/[0.055] blur-[150px]"
       />
 
-      <div className="mes-container">
-        <div className="grid gap-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(26rem,1.1fr)] lg:gap-24">
-          {/* SECTION: Philosophy statement */}
-          <div className="lg:sticky lg:top-32 lg:self-start">
-            <p className="mes-eyebrow">
-              <span className="mes-accent-dot" />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/10"
+      />
+
+      <div className="mes-container relative">
+        <div className="grid gap-14 lg:grid-cols-[minmax(0,0.8fr)_minmax(30rem,1.2fr)] lg:items-start lg:gap-24">
+          {/* SECTION: Introduction */}
+          <div>
+            <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#929AA3]">
+              <span
+                aria-hidden="true"
+                className="h-2 w-2 rounded-full bg-[#298DFF] shadow-[0_0_12px_rgba(41,141,255,0.3)]"
+              />
               What we believe
             </p>
 
+            <p className="mt-8 max-w-sm text-sm leading-7 text-[#B8BEC5]">
+              The best technology doesn&apos;t ask a business to change what
+              makes it work. It removes friction, creates clarity, and gives
+              people better tools to move forward.
+            </p>
+          </div>
+
+          {/* SECTION: Philosophy statement */}
+          <div>
             <h2
               id="philosophy-heading"
-              className="mt-6 max-w-[10ch] text-4xl
-sm:text-5xl
-md:text-6xl
-lg:text-7xl
-leading-[0.92]
-tracking-[-0.06em] font-semibold leading-[0.92] tracking-[-0.07em] text-white"
+              className="max-w-[11ch] text-[clamp(3rem,6vw,6rem)] font-semibold leading-[0.92] tracking-[-0.065em] text-[#F4F6F8]"
             >
               Technology should adapt to people.
             </h2>
 
-            <p className="mt-3 max-w-[10ch] text-[clamp(3rem,6vw,6rem)] font-semibold leading-[0.92] tracking-[-0.07em] text-white/45">
+            <p className="mt-3 max-w-[11ch] text-[clamp(3rem,6vw,6rem)] font-semibold leading-[0.92] tracking-[-0.065em] text-[#AEB5BC]"
+            >
               Not the other way around.
             </p>
-
-            <p className="mt-10 max-w-lg text-base leading-8 text-white/48">
-              MES begins with the people, decisions, and workflows already
-              shaping the organization. Technology is introduced only where it
-              creates clarity, capability, and meaningful progress.
-            </p>
           </div>
+        </div>
 
-          {/* SECTION: Principles */}
-          <div className="border-t border-white/[0.08]">
-            {principles.map((principle, index) => {
-              const isActive = activePrinciple === index;
+        {/* SECTION: Principles */}
+        <div className="mt-20 border-y border-white/10 lg:mt-28">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4">
+            {principles.map((principle, index) => (
+              <div
+                key={principle}
+                className={[
+                  "group py-7 sm:py-8",
+                  index % 2 !== 0 ? "sm:border-l sm:border-white/10" : "",
+                  index > 1 ? "sm:border-t sm:border-white/10" : "",
+                  index > 0 ? "lg:border-l lg:border-white/10" : "",
+                  "lg:border-t-0",
+                ].join(" ")}
+              >
+                <div className="px-0 sm:px-7 lg:px-8">
+                  <div className="flex items-center gap-4">
+                    <span className="text-xs font-semibold tracking-[0.18em] text-[#298DFF]">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
 
-              return (
-                <article
-                  key={principle.title}
-                  tabIndex={0}
-                  onMouseEnter={() => setActivePrinciple(index)}
-                  onFocus={() => setActivePrinciple(index)}
-                  onClick={() => setActivePrinciple(index)}
-                  className="group relative cursor-pointer border-b border-white/[0.08] py-9 outline-none sm:py-11"
-                >
-                  <div className="grid gap-6 sm:grid-cols-[4rem_minmax(0,1fr)] sm:gap-8">
-                    <div className="flex items-start gap-3 pt-1">
-                      <span
-                        aria-hidden="true"
-                        className={[
-                          "mt-1.5 h-2 w-2 shrink-0 rounded-full border transition-all duration-500",
-                          isActive
-                            ? "scale-110 border-blue-300 bg-blue-400 shadow-[0_0_16px_rgba(96,165,250,0.75)]"
-                            : "border-white/20 bg-transparent",
-                        ].join(" ")}
-                      />
-
-                      <span
-                        className={[
-                          "text-xs font-semibold tracking-[0.18em] transition-colors duration-500",
-                          isActive ? "text-white/55" : "text-white/25",
-                        ].join(" ")}
-                      >
-                        {principle.number}
-                      </span>
-                    </div>
-
-                    <div>
-                      <h3
-                        className={[
-                          "text-3xl font-semibold tracking-[-0.045em] transition-colors duration-500 sm:text-4xl",
-                          isActive ? "text-white" : "text-white/45",
-                        ].join(" ")}
-                      >
-                        {principle.title}
-                      </h3>
-
-                      <div
-                        className={[
-                          "grid transition-[grid-template-rows,opacity,margin] duration-500 ease-out",
-                          isActive
-                            ? "mt-5 grid-rows-[1fr] opacity-100"
-                            : "mt-0 grid-rows-[0fr] opacity-0",
-                        ].join(" ")}
-                      >
-                        <div className="overflow-hidden">
-                          <p className="max-w-xl text-base leading-7 text-white/48">
-                            {principle.description}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+                    <span className="h-px w-6 bg-white/15 transition-all duration-300 group-hover:w-10 group-hover:bg-[#298DFF]/60" />
                   </div>
 
-                  <div
-                    aria-hidden="true"
-                    className={[
-                      "pointer-events-none absolute inset-y-0 right-0 w-px origin-center bg-blue-400 transition-transform duration-500",
-                      isActive ? "scale-y-100" : "scale-y-0",
-                    ].join(" ")}
-                  />
-                </article>
-              );
-            })}
+                  <h3 className="mt-4 text-xl font-semibold tracking-[-0.035em] text-[#F1F3F5] sm:text-2xl">
+                    {principle}
+                  </h3>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
         {/* SECTION: Closing thought */}
-        <div className="mt-20 border-t border-white/[0.08] pt-10 lg:mt-28">
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,0.75fr)_minmax(24rem,1.25fr)] lg:items-start">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/45">
-              The MES standard
-            </p>
+        <div className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between lg:mt-12">
+          <p className="max-w-2xl text-base leading-8 text-[#B8BEC5]">
+            Every MES project starts by understanding the people, processes,
+            and decisions behind the technology.
+          </p>
 
-            <p className="max-w-3xl text-2xl font-medium leading-[1.35] tracking-[-0.025em] text-white/72 sm:text-3xl">
-              Every design decision should help someone make a better
-              technology decision.
-            </p>
-          </div>
+          <Link
+            href="/about"
+            className="group inline-flex w-fit items-center gap-3 text-sm font-semibold text-[#F1F3F5] transition-colors duration-300 hover:text-[#298DFF]"
+          >
+            Our approach
+            <ArrowRight
+              aria-hidden="true"
+              className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+            />
+          </Link>
         </div>
       </div>
     </section>

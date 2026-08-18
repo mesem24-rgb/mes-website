@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 
 import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
 
 type SiteFrameProps = {
   children: ReactNode;
@@ -14,7 +13,6 @@ export function SiteFrame({ children }: SiteFrameProps) {
 
       {children}
 
-      <Footer />
     </>
   );
 }

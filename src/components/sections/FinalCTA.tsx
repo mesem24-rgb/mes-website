@@ -11,7 +11,7 @@ export function FinalCTA() {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#252A30]/35 to-transparent"
       />
 
       <div

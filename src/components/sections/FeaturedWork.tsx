@@ -27,7 +27,6 @@ const projects: FeaturedProject[] = [
       "ConstructFlow brings project tracking, daily logs, RFIs, change orders, and document management into one structured platform designed around the way construction teams actually work.",
     image: "/images/products/constructFlow.jpg",
     imageAlt: "ConstructFlow construction management dashboard",
-
     href: "/work/constructflow",
     cta: "View case study",
     technologies: [
@@ -74,7 +73,7 @@ const projects: FeaturedProject[] = [
   },
   {
     name: "Elite Ball Co.",
-    category: "Reclaimed Golf Ball Retail Brand",
+    category: "Small-Business Website",
     headline:
       "Creating a trustworthy digital presence for quality reclaimed golf balls.",
     challenge:
@@ -102,7 +101,7 @@ const projects: FeaturedProject[] = [
   },
   {
     name: "MES",
-    category: "Brand and Digital Experience",
+    category: "Brand & Digital Experience",
     headline: "Built to demonstrate the philosophy behind the work.",
     challenge:
       "MES needed more than a standard marketing page. The experience had to communicate a thoughtful approach to software while giving potential clients a clear and comfortable path to begin a conversation.",
@@ -110,7 +109,7 @@ const projects: FeaturedProject[] = [
       "The result is an editorial digital experience with restrained motion, responsive interaction, a living visual system, and a conversation-led structure designed to feel clear, intentional, and human.",
     image: "/images/products/mes-website.jpg",
     imageAlt: "MES website homepage",
-    href: "#contact",
+    href: "/#contact",
     cta: "Start a conversation",
     technologies: [
       "Next.js",
@@ -129,7 +128,16 @@ const projects: FeaturedProject[] = [
   },
 ];
 
-function DetailList({ label, items }: { label: string; items: string[] }) {
+const flagshipProjects = projects.slice(0, 2);
+const supportingProjects = projects.slice(2);
+
+function DetailList({
+  label,
+  items,
+}: {
+  label: string;
+  items: string[];
+}) {
   return (
     <div>
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/30">
@@ -155,7 +163,13 @@ function DetailList({ label, items }: { label: string; items: string[] }) {
   );
 }
 
-function StoryBlock({ label, children }: { label: string; children: string }) {
+function StoryBlock({
+  label,
+  children,
+}: {
+  label: string;
+  children: string;
+}) {
   return (
     <div className="border-l border-white/[0.09] pl-5">
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-300/65">
@@ -169,7 +183,11 @@ function StoryBlock({ label, children }: { label: string; children: string }) {
   );
 }
 
-function ProjectVisual({ project }: { project: FeaturedProject }) {
+function ProjectVisual({
+  project,
+}: {
+  project: FeaturedProject;
+}) {
   const isExternal = project.href.startsWith("http");
 
   return (
@@ -257,19 +275,34 @@ function ProjectDetails({
       </p>
 
       <div className="mt-9 space-y-8">
-        <StoryBlock label="The challenge">{project.challenge}</StoryBlock>
+        <StoryBlock label="The challenge">
+          {project.challenge}
+        </StoryBlock>
 
-        <StoryBlock label="The solution">{project.solution}</StoryBlock>
+        <StoryBlock label="The solution">
+          {project.solution}
+        </StoryBlock>
       </div>
 
       <div className="mt-10 grid gap-10 border-t border-white/[0.08] pt-8 sm:grid-cols-2">
-        <DetailList label="Core modules" items={project.capabilities} />
+        <DetailList
+          label="Core modules"
+          items={project.capabilities}
+        />
 
-        <DetailList label="Built with" items={project.technologies} />
+        <DetailList
+          label="Built with"
+          items={project.technologies}
+        />
       </div>
 
-      <a
+      <TrackedLink
         href={project.href}
+        eventName={`work_${project.name
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "_")
+          .replace(/^_|_$/g, "")}_cta_clicked`}
+        ariaLabel={`${project.cta}: ${project.name}`}
         target={isExternal ? "_blank" : undefined}
         rel={isExternal ? "noreferrer" : undefined}
         className="group mt-10 inline-flex w-fit items-center gap-3 border-b border-white/15 pb-1.5 text-sm font-semibold text-white/65 transition-all duration-300 hover:border-blue-400/20 hover:text-white"
@@ -280,8 +313,80 @@ function ProjectDetails({
           aria-hidden="true"
           className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
         />
-      </a>
+      </TrackedLink>
     </div>
+  );
+}
+
+function CompactProjectCard({
+  project,
+  index,
+}: {
+  project: FeaturedProject;
+  index: number;
+}) {
+  return (
+    <article className="group">
+      <TrackedLink
+        href={project.href}
+        eventName={`work_${project.name
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "_")
+          .replace(/^_|_$/g, "")}_clicked`}
+        ariaLabel={`${project.cta}: ${project.name}`}
+        className="block"
+      >
+        <div className="overflow-hidden rounded-2xl border border-white/[0.1] bg-[#070b12] shadow-[0_20px_70px_rgba(0,0,0,0.22)] transition-transform duration-500 group-hover:-translate-y-1">
+          <Image
+            src={project.image}
+            alt={project.imageAlt}
+            width={1440}
+            height={900}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="h-auto w-full transition-transform duration-700 group-hover:scale-[1.015]"
+          />
+        </div>
+      </TrackedLink>
+
+      <div className="mt-7">
+        <div className="flex items-center gap-3">
+          <span className="font-mono text-xs tracking-[0.12em] text-blue-300/75">
+            0{index + 3}
+          </span>
+
+          <span className="text-white/20">/</span>
+
+          <span className="text-xs font-semibold uppercase tracking-[0.16em] text-white/35">
+            {project.category}
+          </span>
+        </div>
+
+        <h3 className="mt-5 text-3xl font-semibold tracking-[-0.045em] text-white">
+          {project.name}
+        </h3>
+
+        <p className="mt-4 max-w-xl text-base leading-7 text-white/55">
+          {project.headline}
+        </p>
+
+        <TrackedLink
+          href={project.href}
+          eventName={`work_${project.name
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "_")
+            .replace(/^_|_$/g, "")}_cta_clicked`}
+          ariaLabel={`${project.cta}: ${project.name}`}
+          className="group/link mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white/65 transition-colors hover:text-white"
+        >
+          {project.cta}
+
+          <ArrowUpRight
+            aria-hidden="true"
+            className="h-4 w-4 transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
+          />
+        </TrackedLink>
+      </div>
+    </article>
   );
 }
 
@@ -303,6 +408,7 @@ export function FeaturedWork() {
       />
 
       <div className="mes-container relative">
+        {/* SECTION: Intro */}
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(24rem,0.55fr)] lg:items-end lg:gap-20">
           <div>
             <p className="mes-eyebrow">
@@ -314,19 +420,22 @@ export function FeaturedWork() {
               id="featured-work-heading"
               className="mt-6 max-w-[10ch] text-[clamp(3.25rem,7vw,7rem)] font-semibold leading-[0.9] tracking-[-0.075em] text-white"
             >
-              Software built for real businesses.
+              Different businesses.
+              <br />
+              Different solutions.
             </h2>
           </div>
 
           <p className="max-w-lg text-base leading-8 text-white/45 lg:pb-3">
-            Every organization works differently. These projects show how MES
-            approaches workflow, collaboration, and custom software around real
-            operational needs.
+            Every business works differently. These projects show how MES turns
+            different needs, workflows, and ideas into websites and software
+            built around the people who use them.
           </p>
         </div>
 
+        {/* SECTION: Flagship projects */}
         <div className="mt-20 border-t border-white/[0.08] sm:mt-28">
-          {projects.map((project, index) => {
+          {flagshipProjects.map((project, index) => {
             const imageFirst = index % 2 === 0;
 
             return (
@@ -348,12 +457,58 @@ export function FeaturedWork() {
                   <ProjectVisual project={project} />
                 </div>
 
-                <div className={imageFirst ? "lg:order-2" : "lg:order-1"}>
-                  <ProjectDetails project={project} index={index} />
+                <div
+                  className={
+                    imageFirst ? "lg:order-2" : "lg:order-1"
+                  }
+                >
+                  <ProjectDetails
+                    project={project}
+                    index={index}
+                  />
                 </div>
               </article>
             );
           })}
+        </div>
+
+        {/* SECTION: More from MES */}
+        <div className="relative mt-20 overflow-hidden rounded-[2rem] bg-[#252A30]/80 px-6 py-12 sm:mt-28 sm:px-10 sm:py-16 lg:px-14 lg:py-20">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-32 -top-20 h-[28rem] w-[28rem] rounded-full bg-blue-500/[0.055] blur-[140px]"
+          />
+
+          <div className="relative">
+            <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-20">
+              <div>
+                <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-white/45">
+                  <span className="h-2 w-2 rounded-full bg-blue-400" />
+                  More from MES
+                </p>
+
+                <h3 className="mt-6 max-w-[10ch] text-4xl font-semibold leading-[0.95] tracking-[-0.055em] text-white sm:text-5xl">
+                  Different needs call for different kinds of work.
+                </h3>
+              </div>
+
+              <p className="max-w-xl text-base leading-8 text-white/50 lg:justify-self-end">
+                Not every business needs a complex platform. Sometimes the right
+                solution is a focused website, a clearer customer experience,
+                or a better way to introduce the business.
+              </p>
+            </div>
+
+            <div className="mt-12 grid gap-12 border-t border-white/10 pt-12 lg:grid-cols-2 lg:gap-14">
+              {supportingProjects.map((project, index) => (
+                <CompactProjectCard
+                  key={project.name}
+                  project={project}
+                  index={index}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
