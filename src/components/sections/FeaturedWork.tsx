@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { TrackedLink } from "@/components/analytics/TrackedLink";
+import { Reveal } from "@/components/motion/Reveal";
 
 type FeaturedProject = {
   name: string;
@@ -131,13 +132,7 @@ const projects: FeaturedProject[] = [
 const flagshipProjects = projects.slice(0, 2);
 const supportingProjects = projects.slice(2);
 
-function DetailList({
-  label,
-  items,
-}: {
-  label: string;
-  items: string[];
-}) {
+function DetailList({ label, items }: { label: string; items: string[] }) {
   return (
     <div>
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/30">
@@ -163,13 +158,7 @@ function DetailList({
   );
 }
 
-function StoryBlock({
-  label,
-  children,
-}: {
-  label: string;
-  children: string;
-}) {
+function StoryBlock({ label, children }: { label: string; children: string }) {
   return (
     <div className="border-l border-white/[0.09] pl-5">
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-300/65">
@@ -183,11 +172,7 @@ function StoryBlock({
   );
 }
 
-function ProjectVisual({
-  project,
-}: {
-  project: FeaturedProject;
-}) {
+function ProjectVisual({ project }: { project: FeaturedProject }) {
   const isExternal = project.href.startsWith("http");
 
   return (
@@ -275,25 +260,15 @@ function ProjectDetails({
       </p>
 
       <div className="mt-9 space-y-8">
-        <StoryBlock label="The challenge">
-          {project.challenge}
-        </StoryBlock>
+        <StoryBlock label="The challenge">{project.challenge}</StoryBlock>
 
-        <StoryBlock label="The solution">
-          {project.solution}
-        </StoryBlock>
+        <StoryBlock label="The solution">{project.solution}</StoryBlock>
       </div>
 
       <div className="mt-10 grid gap-10 border-t border-white/[0.08] pt-8 sm:grid-cols-2">
-        <DetailList
-          label="Core modules"
-          items={project.capabilities}
-        />
+        <DetailList label="Core modules" items={project.capabilities} />
 
-        <DetailList
-          label="Built with"
-          items={project.technologies}
-        />
+        <DetailList label="Built with" items={project.technologies} />
       </div>
 
       <TrackedLink
@@ -454,18 +429,22 @@ export function FeaturedWork() {
                     imageFirst ? "lg:order-1" : "lg:order-2",
                   ].join(" ")}
                 >
-                  <ProjectVisual project={project} />
+                  <Reveal
+                    direction={imageFirst ? "left" : "right"}
+                    distance={24}
+                  >
+                    <ProjectVisual project={project} />
+                  </Reveal>
                 </div>
 
-                <div
-                  className={
-                    imageFirst ? "lg:order-2" : "lg:order-1"
-                  }
-                >
-                  <ProjectDetails
-                    project={project}
-                    index={index}
-                  />
+                <div className={imageFirst ? "lg:order-2" : "lg:order-1"}>
+                  <Reveal
+                    direction={imageFirst ? "right" : "left"}
+                    distance={24}
+                    delay={90}
+                  >
+                    <ProjectDetails project={project} index={index} />
+                  </Reveal>
                 </div>
               </article>
             );
@@ -494,18 +473,20 @@ export function FeaturedWork() {
 
               <p className="max-w-xl text-base leading-8 text-white/50 lg:justify-self-end">
                 Not every business needs a complex platform. Sometimes the right
-                solution is a focused website, a clearer customer experience,
-                or a better way to introduce the business.
+                solution is a focused website, a clearer customer experience, or
+                a better way to introduce the business.
               </p>
             </div>
 
             <div className="mt-12 grid gap-12 border-t border-white/10 pt-12 lg:grid-cols-2 lg:gap-14">
               {supportingProjects.map((project, index) => (
-                <CompactProjectCard
-                  key={project.name}
-                  project={project}
-                  index={index}
-                />
+                <Reveal key={project.name} delay={index * 100} direction="up">
+                  <CompactProjectCard
+                    key={project.name}
+                    project={project}
+                    index={index}
+                  />
+                </Reveal>
               ))}
             </div>
           </div>

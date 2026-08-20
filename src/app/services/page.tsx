@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
+import { Reveal } from "@/components/motion/Reveal";
 import { SiteFrame } from "@/components/layout/SiteFrame";
 import {
   ArrowLeft,
@@ -274,45 +275,44 @@ export default function ServicesPage() {
             </div>
 
             <div className="mt-16 grid border-t border-white/[0.08] lg:mt-24">
-              {servicePaths.map((path) => {
+              {servicePaths.map((path, index) => {
                 const Icon = path.icon;
 
                 return (
-                  <article
-                    key={path.number}
-                    className="grid gap-8 border-b border-white/[0.08] py-12 lg:grid-cols-[5rem_0.8fr_1.2fr] lg:gap-12 lg:py-16"
-                  >
-                    <div className="flex items-start gap-4 lg:block">
-                      <span className="font-mono text-xs text-blue-300/75">
-                        {path.number}
-                      </span>
+                  <Reveal key={path.number} delay={index * 90} direction="up">
+                    <article className="grid gap-8 border-b border-white/[0.08] py-12 lg:grid-cols-[5rem_0.8fr_1.2fr] lg:gap-12 lg:py-16">
+                      <div className="flex items-start gap-4 lg:block">
+                        <span className="font-mono text-xs text-blue-300/75">
+                          {path.number}
+                        </span>
 
-                      <div className="mt-0 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.025] text-white/50 lg:mt-6">
-                        <Icon className="h-4 w-4" />
-                      </div>
-                    </div>
-
-                    <div>
-                      <h3 className="max-w-[12ch] text-3xl font-semibold tracking-[-0.045em] text-white sm:text-4xl">
-                        {path.title}
-                      </h3>
-
-                      <p className="mt-5 max-w-lg text-base leading-8 text-white/46">
-                        {path.description}
-                      </p>
-                    </div>
-
-                    <div className="grid gap-0 border-t border-white/[0.08] sm:grid-cols-2 lg:border-t-0">
-                      {path.services.map((service) => (
-                        <div
-                          key={service}
-                          className="border-b border-white/[0.08] py-4 text-sm text-white/55 sm:px-4 lg:first:pt-0"
-                        >
-                          {service}
+                        <div className="mt-0 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.025] text-white/50 lg:mt-6">
+                          <Icon className="h-4 w-4" />
                         </div>
-                      ))}
-                    </div>
-                  </article>
+                      </div>
+
+                      <div>
+                        <h3 className="max-w-[12ch] text-3xl font-semibold tracking-[-0.045em] text-white sm:text-4xl">
+                          {path.title}
+                        </h3>
+
+                        <p className="mt-5 max-w-lg text-base leading-8 text-white/46">
+                          {path.description}
+                        </p>
+                      </div>
+
+                      <div className="grid gap-0 border-t border-white/[0.08] sm:grid-cols-2 lg:border-t-0">
+                        {path.services.map((service) => (
+                          <div
+                            key={service}
+                            className="border-b border-white/[0.08] py-4 text-sm text-white/55 sm:px-4 lg:first:pt-0"
+                          >
+                            {service}
+                          </div>
+                        ))}
+                      </div>
+                    </article>
+                  </Reveal>
                 );
               })}
             </div>
@@ -320,8 +320,13 @@ export default function ServicesPage() {
         </section>
 
         {/* WHAT WE BUILD */}
-        <section className="mes-section border-t border-white/[0.08]">
-          <div className="mes-container">
+        <section className="mes-section relative overflow-hidden border-t border-white/[0.08] bg-[#252A30]/80">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -left-40 top-0 h-[34rem] w-[34rem] rounded-full bg-blue-500/[0.04] blur-[150px]"
+          />
+
+          <div className="mes-container relative">
             <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
               <div>
                 <p className="mes-eyebrow">
@@ -342,36 +347,46 @@ export default function ServicesPage() {
             </div>
 
             <div className="mt-16 grid border-t border-white/[0.08] sm:grid-cols-2 lg:mt-24 lg:grid-cols-3">
-              {serviceTypes.map((service) => {
+              {serviceTypes.map((service, index) => {
                 const Icon = service.icon;
 
                 return (
-                  <article
+                  <Reveal
                     key={service.title}
-                    className="group border-b border-white/[0.08] px-0 py-10 sm:px-8 sm:first:pl-0 lg:min-h-[19rem] lg:border-r lg:px-8 lg:py-12 [&:nth-child(3n)]:lg:border-r-0"
+                    delay={(index % 3) * 80}
+                    direction="up"
+                    className="h-full"
                   >
-                    <div className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.025] text-white/45 transition-all duration-300 group-hover:border-blue-400/35 group-hover:bg-blue-500/10 group-hover:text-blue-300">
-                      <Icon className="h-5 w-5" />
-                    </div>
+                    <article
+                      className={[
+                        "group h-full border-b border-white/[0.08] px-0 py-10 sm:px-8 lg:min-h-[20rem] lg:border-r lg:px-10 lg:py-12",
+                        index % 3 === 0 ? "lg:pl-0" : "",
+                        (index + 1) % 3 === 0 ? "lg:border-r-0 lg:pr-0" : "",
+                      ].join(" ")}
+                    >
+                      <div className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.025] text-white/45 transition-all duration-300 group-hover:border-blue-400/35 group-hover:bg-blue-500/10 group-hover:text-blue-300">
+                        <Icon className="h-5 w-5" />
+                      </div>
 
-                    <h3 className="mt-8 text-2xl font-semibold tracking-[-0.04em] text-white/80 transition-colors group-hover:text-white">
-                      {service.title}
-                    </h3>
+                      <h3 className="mt-8 text-2xl font-semibold tracking-[-0.04em] text-white/80 transition-colors group-hover:text-white">
+                        {service.title}
+                      </h3>
 
-                    <p className="mt-5 max-w-sm text-sm leading-7 text-white/43 sm:text-base sm:leading-8">
-                      {service.description}
-                    </p>
+                      <p className="mt-5 max-w-sm text-sm leading-7 text-white/43 sm:text-base sm:leading-8">
+                        {service.description}
+                      </p>
 
-                    {service.caseStudy && (
-                      <Link
-                        href={service.caseStudy.href}
-                        className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white/55 transition-colors hover:text-white"
-                      >
-                        {service.caseStudy.label}
-                        <ArrowUpRight className="h-4 w-4" />
-                      </Link>
-                    )}
-                  </article>
+                      {service.caseStudy && (
+                        <Link
+                          href={service.caseStudy.href}
+                          className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white/55 transition-colors hover:text-white"
+                        >
+                          {service.caseStudy.label}
+                          <ArrowUpRight className="h-4 w-4" />
+                        </Link>
+                      )}
+                    </article>
+                  </Reveal>
                 );
               })}
             </div>
@@ -401,36 +416,48 @@ export default function ServicesPage() {
 
             <div className="mt-16 grid border-t border-white/[0.08] lg:mt-24 lg:grid-cols-4">
               {process.map((step, index) => (
-                <article
+                <Reveal
                   key={step.number}
-                  className={[
-                    "border-b border-white/[0.08] py-10 lg:min-h-[20rem] lg:border-b-0 lg:px-8 lg:py-12",
-                    index === 0
-                      ? "lg:pl-0"
-                      : "lg:border-l lg:border-white/[0.08]",
-                    index === process.length - 1 ? "lg:pr-0" : "",
-                  ].join(" ")}
+                  delay={index * 85}
+                  direction="up"
+                  className="h-full"
                 >
-                  <span className="font-mono text-xs text-blue-300/70">
-                    {step.number}
-                  </span>
+                  <article
+                    key={step.number}
+                    className={[
+                      "border-b border-white/[0.08] py-10 lg:min-h-[20rem] lg:border-b-0 lg:px-8 lg:py-12",
+                      index === 0
+                        ? "lg:pl-0"
+                        : "lg:border-l lg:border-white/[0.08]",
+                      index === process.length - 1 ? "lg:pr-0" : "",
+                    ].join(" ")}
+                  >
+                    <span className="font-mono text-xs text-blue-300/70">
+                      {step.number}
+                    </span>
 
-                  <h3 className="mt-8 text-3xl font-semibold tracking-[-0.045em] text-white/80">
-                    {step.title}
-                  </h3>
+                    <h3 className="mt-8 text-3xl font-semibold tracking-[-0.045em] text-white/80">
+                      {step.title}
+                    </h3>
 
-                  <p className="mt-5 text-sm leading-7 text-white/44 sm:text-base sm:leading-8">
-                    {step.text}
-                  </p>
-                </article>
+                    <p className="mt-5 text-sm leading-7 text-white/44 sm:text-base sm:leading-8">
+                      {step.text}
+                    </p>
+                  </article>
+                </Reveal>
               ))}
             </div>
           </div>
         </section>
 
         {/* FIT */}
-        <section className="mes-section border-t border-white/[0.08]">
-          <div className="mes-container">
+        <section className="mes-section relative overflow-hidden border-t border-white/[0.08] bg-[#252A30]/80">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-40 top-20 h-[32rem] w-[32rem] rounded-full bg-blue-500/[0.04] blur-[150px]"
+          />
+
+          <div className="mes-container relative">
             <div className="grid gap-14 lg:grid-cols-[0.75fr_1.25fr] lg:gap-24">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-300/65">

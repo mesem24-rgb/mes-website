@@ -126,8 +126,13 @@ export default function AboutPage() {
         </section>
 
         {/* ORIGIN */}
-        <section className="mes-section border-t border-white/[0.08]">
-          <div className="mes-container">
+        <section className="mes-section relative overflow-hidden border-t border-white/[0.08] bg-[#252A30]/80">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -left-40 top-0 h-[34rem] w-[34rem] rounded-full bg-blue-500/[0.04] blur-[150px]"
+          />
+
+          <div className="mes-container relative">
             <div className="grid gap-14 lg:grid-cols-[0.75fr_1.25fr] lg:gap-24">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-300/65">
@@ -218,8 +223,13 @@ export default function AboutPage() {
         </section>
 
         {/* MEANINGFUL EMPOWERING SOLUTIONS */}
-        <section className="mes-section border-t border-white/[0.08]">
-          <div className="mes-container">
+        <section className="mes-section relative overflow-hidden border-t border-white/[0.08] bg-[#252A30]/80">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-40 top-20 h-[32rem] w-[32rem] rounded-full bg-blue-500/[0.04] blur-[150px]"
+          />
+
+          <div className="mes-container relative">
             <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-24">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-300/65">
