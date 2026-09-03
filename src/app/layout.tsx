@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
+import GoogleAnalytics from "@/components/ui/GoogleAnalytics";
 
 import "./globals.css";
 
