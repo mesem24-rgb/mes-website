@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 import "./globals.css";
 
@@ -120,7 +122,8 @@ export default function RootLayout({
         {children}
 
         <Analytics />
-
+        <SpeedInsights />
+        <GoogleAnalytics />
         <Script
           id="organization-schema"
           type="application/ld+json"
