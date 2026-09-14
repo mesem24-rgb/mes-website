@@ -131,12 +131,12 @@ export function Footer() {
               ))}
 
               <a
-                href="mailto:contact@mes-solutions.dev?subject=MES%20Project%20Inquiry"
+                href="mailto:michael@mes-solutions.dev?subject=MES%20Project%20Inquiry"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-2 text-sm text-white/50 transition-colors duration-300 hover:text-white"
               >
-                contact@mes-solutions.dev
+                michael@mes-solutions.dev
               </a>
 
               <a

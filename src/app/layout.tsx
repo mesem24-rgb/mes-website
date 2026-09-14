@@ -13,7 +13,7 @@ const organizationSchema = {
   name: "MES",
   alternateName: "Meaningful Empowering Solutions",
   url: "https://www.mes-solutions.dev",
-  email: "contact@mes-solutions.dev",
+  email: "michael@mes-solutions.dev",
 
   founder: {
     "@type": "Person",

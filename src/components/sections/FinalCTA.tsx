@@ -45,7 +45,7 @@ export function FinalCTA() {
               </h3>
 
               <a
-                href="mailto:contact@mes-solutions.dev?subject=MES%20Project%20Inquiry"
+                href="mailto:michael@mes-solutions.dev?subject=MES%20Project%20Inquiry"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-4 text-sm text-white/50 transition-all duration-300 hover:text-white"
@@ -54,7 +54,7 @@ export function FinalCTA() {
                   <Mail aria-hidden="true" className="h-4 w-4" />
                 </span>
 
-                <span>contact@mes-solutions.dev</span>
+                <span>michael@mes-solutions.dev</span>
               </a>
 
               <a
