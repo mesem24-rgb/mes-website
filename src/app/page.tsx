@@ -5,12 +5,11 @@ import { Footer } from "@/components/layout/Footer";
 import { ChoiceExperience } from "@/components/layout/ChoiceExperience";
 import { Hero } from "@/components/sections/Hero";
 import { PhilosophySection } from "@/components/sections/PhilosophySection";
-
+import { FeaturedWorkPreview } from "@/components/sections/FeaturedWorkPreview";
+import { FounderSection } from "@/components/sections/FounderSection";
 const FinalCTA = dynamic(
   () =>
-    import("@/components/sections/FinalCTA").then(
-      (module) => module.FinalCTA,
-    ),
+    import("@/components/sections/FinalCTA").then((module) => module.FinalCTA),
   {
     loading: () => null,
   },
@@ -18,7 +17,7 @@ const FinalCTA = dynamic(
 
 export default function HomePage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#070b12]">
+    <main className="relative min-h-screen overflow-hidden bg-[#070b12] text-white">
       <Navbar />
 
       {/* INTRODUCTION */}
@@ -34,13 +33,22 @@ export default function HomePage() {
         <PhilosophySection />
       </div>
 
-      {/* PROOF */}
+      {/* FEATURED WORK PREVIEW */}
       <div className="relative z-10">
-        {/* CONVERSATION */}
-        <FinalCTA />
-
-        <Footer />
+        <FeaturedWorkPreview />
       </div>
+
+      {/* MEET THE FOUNDER */}
+      <div className="relative z-10">
+        <FounderSection compact />
+      </div>
+
+      {/* CONVERSATION */}
+      <div className="relative z-10">
+        <FinalCTA />
+      </div>
+
+      <Footer />
     </main>
   );
 }

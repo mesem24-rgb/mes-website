@@ -22,8 +22,6 @@ export const metadata: Metadata = {
   },
 };
 
-
-
 export default function WorkPage() {
   return (
     <SiteFrame>
@@ -61,28 +59,48 @@ export default function WorkPage() {
             </div>
           </div>
         </section>
-        <FeaturedWork />
+        <FeaturedWork showIntro={false} />
 
         {/* CTA */}
-        <section className="mes-section border-t border-white/[0.08]">
-          <div className="mes-container">
-            <div className="max-w-3xl">
-              <p className="mes-eyebrow">
-                <span className="mes-accent-dot" />
-                Your project will look different
-              </p>
+        <section className="relative overflow-hidden border-t border-white/[0.08] bg-[#252A30]/60 py-20 sm:py-28 lg:py-32">
+          {/* Subtle background glow */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-32 top-0 h-[30rem] w-[30rem] rounded-full bg-blue-500/[0.045] blur-[140px]"
+          />
 
-              <h2 className="mt-6 text-[clamp(3rem,7vw,6rem)] font-semibold leading-[0.92] tracking-[-0.07em]">
-                The right solution starts with understanding the problem.
-              </h2>
+          <div className="mes-container relative">
+            <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:gap-20">
+              <div>
+                <p className="mes-eyebrow">
+                  <span className="mes-accent-dot" />
+                  Your business is different
+                </p>
 
-              <Link
-                href="/#journey"
-                className="mes-button mes-button-primary group mt-9 inline-flex"
-              >
-                Find your starting point
-                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </Link>
+                <h2 className="mt-7 max-w-[13ch] text-[clamp(3rem,6vw,6rem)] font-semibold leading-[0.95] tracking-[-0.065em] text-white">
+                  Let's build something that works for yours.
+                </h2>
+              </div>
+
+              <div className="lg:pb-2">
+                <p className="max-w-md text-base leading-8 text-white/55">
+                  You don't need to have every detail figured out. Tell us what
+                  you're trying to accomplish, what's getting in the way, or
+                  what you wish worked better. We'll help you find the right
+                  starting point.
+                </p>
+
+                <Link
+                  href="/#journey"
+                  className="mes-button mes-button-primary group mt-9 inline-flex"
+                >
+                  Let's talk about your project
+                  <ArrowUpRight
+                    aria-hidden="true"
+                    className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  />
+                </Link>
+              </div>
             </div>
           </div>
         </section>

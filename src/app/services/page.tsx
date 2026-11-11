@@ -95,17 +95,23 @@ const serviceTypes = [
     icon: Globe2,
     title: "Business websites",
     description:
-      "Custom business websites designed to establish credibility, improve local visibility, explain your services clearly, and turn visitors into customer inquiries.",
+      "A website should do more than give your business an online address. MES builds professional, search-friendly websites designed to help customers discover your business, understand your services, and take the next step.",
     caseStudy: {
       label: "See Elite Ball Co.",
       href: "/work/elite-ball-co",
     },
   },
   {
-    icon: LayoutDashboard,
-    title: "Operational platforms",
+    icon: Compass,
+    title: "Website optimization & visibility",
     description:
-      "Custom systems that bring projects, people, documents, tasks, and day-to-day workflows into one structured workspace.",
+      "Improve how your existing website performs, how search engines understand it, and how easily customers can find your business. From technical SEO and performance to content structure and AI search readiness.",
+  },
+  {
+    icon: LayoutDashboard,
+    title: "Custom business software",
+    description:
+      "Replace disconnected spreadsheets, manual tracking, and software that doesn't fit with purpose-built systems designed around your business operations.",
     caseStudy: {
       label: "See ConstructFlow",
       href: "/work/constructflow",
@@ -115,7 +121,7 @@ const serviceTypes = [
     icon: BriefcaseBusiness,
     title: "Client & team portals",
     description:
-      "Secure digital spaces for sharing information, managing activity, and keeping customers or internal teams connected.",
+      "Give customers, employees, and teams a secure, organized place to share information, manage activity, and stay connected.",
     caseStudy: {
       label: "See Compass CRM",
       href: "/work/compass-crm",
@@ -125,19 +131,13 @@ const serviceTypes = [
     icon: Workflow,
     title: "Workflow automation",
     description:
-      "Reduce repetitive work and disconnected handoffs by designing clearer digital processes around the way the organization operates.",
+      "Reduce repetitive tasks, manual handoffs, and unnecessary administrative work by connecting processes and creating more efficient ways to operate.",
   },
   {
     icon: Wrench,
-    title: "Internal business tools",
+    title: "Software planning & guidance",
     description:
-      "Focused software for the specific operational needs that spreadsheets, generic SaaS products, or manual processes do not handle well.",
-  },
-  {
-    icon: Compass,
-    title: "Software guidance",
-    description:
-      "Practical help defining requirements, evaluating options, and choosing a sensible path before committing time and money to development.",
+      "Not sure what technology your business needs? MES helps evaluate your current tools, identify opportunities, prioritize features, and develop a practical plan before investing in development.",
   },
 ];
 
@@ -169,13 +169,14 @@ const servicesSchema = {
   "@type": "Service",
   name: "MES Software Development Services",
   serviceType: [
-    "Custom Software Development",
-    "Website Development",
-    "Web Application Development",
+    "Business Website Development",
+    "Website Optimization",
+    "Technical SEO",
+    "AI Search Optimization",
+    "Custom Business Software Development",
+    "Client and Team Portals",
     "Workflow Automation",
-    "CRM Development",
-    "Internal Business Tools",
-    "Software Consulting",
+    "Software Planning and Consulting",
   ],
   provider: {
     "@type": "Organization",
@@ -458,25 +459,36 @@ export default function ServicesPage() {
           />
 
           <div className="mes-container relative">
-            <div className="grid gap-14 lg:grid-cols-[0.75fr_1.25fr] lg:gap-24">
+            <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-300/65">
                   A good fit
                 </p>
 
-                <h2 className="mt-5 max-w-[11ch] text-4xl font-semibold tracking-[-0.05em] sm:text-5xl">
-                  MES works best when the problem matters more than the
-                  buzzwords.
+                <h2 className="mt-5 max-w-[12ch] text-4xl font-semibold tracking-[-0.05em] text-white sm:text-5xl">
+                  Building it is only part of the solution.
                 </h2>
+
+                <p className="mt-7 max-w-md text-base leading-8 text-white/55">
+                  Today, almost anyone can launch a website or generate an
+                  application with the right tools. But getting something online
+                  isn't the same as making it work for your business.
+                </p>
+
+                <p className="mt-5 max-w-md text-base leading-8 text-white/55">
+                  MES brings business experience, technical development, and a
+                  practical understanding of how people work together to create
+                  solutions that serve a purpose beyond launch.
+                </p>
               </div>
 
               <div className="grid gap-0 border-t border-white/[0.08]">
                 {[
-                  "You have a process that has outgrown spreadsheets or manual work.",
-                  "Your current tools do not fit the way your team actually operates.",
-                  "You need a professional web presence that better reflects the business.",
-                  "You have an idea but need help defining what should be built first.",
-                  "You want a collaborative development process with visible decisions and progress.",
+                  "Your website exists, but customers aren't finding it or taking the next step.",
+                  "You've tried templates or AI tools, but need help turning the result into something reliable and maintainable.",
+                  "Your business has outgrown spreadsheets, disconnected systems, or repetitive manual work.",
+                  "You need technology that fits your operations instead of forcing your team to change how it works.",
+                  "You want a development partner who understands business decisions, communicates clearly, and remains accountable for the work.",
                 ].map((item, index) => (
                   <div
                     key={item}
@@ -497,32 +509,94 @@ export default function ServicesPage() {
         </section>
 
         {/* CTA */}
-        <section className="mes-section border-t border-white/[0.08]">
-          <div className="mes-container">
-            <div className="max-w-4xl">
-              <p className="mes-eyebrow">
-                <span className="mes-accent-dot" />
-                Start with the problem
+        <section className="relative overflow-hidden border-t border-white/[0.08] py-20 sm:py-28 lg:py-32">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-40 top-0 h-[32rem] w-[32rem] rounded-full bg-blue-500/[0.04] blur-[150px]"
+          />
+
+          <div className="mes-container relative">
+            <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-end lg:gap-20">
+              <div>
+                <p className="mes-eyebrow">
+                  <span className="mes-accent-dot" />
+                  Let's get started
+                </p>
+
+                <h2 className="mt-6 max-w-[12ch] text-[clamp(3rem,6vw,5.5rem)] font-semibold leading-[0.95] tracking-[-0.065em] text-white">
+                  What could work better for your business?
+                </h2>
+              </div>
+
+              <p className="max-w-lg text-base leading-8 text-white/55 lg:pb-2">
+                Whether you're starting from an idea or improving something
+                you've already built, the first step is understanding what you
+                want to accomplish.
               </p>
-
-              <h2 className="mt-6 text-[clamp(3rem,7vw,6.5rem)] font-semibold leading-[0.92] tracking-[-0.07em]">
-                Tell me what is getting in the way.
-              </h2>
-
-              <p className="mt-7 max-w-2xl text-base leading-8 text-white/48">
-                You do not need to know what technology you need before reaching
-                out. Start with the idea, obstacle, or workflow. We can
-                determine the right direction from there.
-              </p>
-
-              <Link
-                href="/#contact"
-                className="mes-button mes-button-primary group mt-9 inline-flex"
-              >
-                Start a conversation
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </Link>
             </div>
+
+            {/* TWO CONTACT PATHS */}
+            <div className="mt-14 grid gap-5 border-t border-white/10 pt-10 lg:mt-20 lg:grid-cols-2">
+              {/* NEW PROJECT */}
+              <div className="group flex flex-col rounded-2xl border border-white/[0.09] bg-white/[0.025] p-8 transition-colors duration-300 hover:border-blue-400/25 hover:bg-white/[0.04] sm:p-10">
+                <span className="font-mono text-xs text-blue-300/70">
+                  01 / NEW PROJECT
+                </span>
+
+                <h3 className="mt-7 text-3xl font-semibold tracking-[-0.045em] text-white">
+                  Build something new.
+                </h3>
+
+                <p className="mt-5 max-w-md flex-1 text-base leading-8 text-white/50">
+                  Need a professional website, custom software, or a better way
+                  to manage your business? Let's explore what makes sense.
+                </p>
+
+                <Link
+                  href="/#contact"
+                  className="mt-9 inline-flex w-fit items-center gap-3 border-b border-white/20 pb-2 text-sm font-semibold text-white transition-colors hover:border-blue-400/50 hover:text-blue-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-400"
+                >
+                  Discuss a new project
+                  <ArrowUpRight
+                    aria-hidden="true"
+                    className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  />
+                </Link>
+              </div>
+
+              {/* EXISTING WEBSITE OR SOFTWARE */}
+              <div className="group flex flex-col rounded-2xl border border-white/[0.09] bg-white/[0.025] p-8 transition-colors duration-300 hover:border-blue-400/25 hover:bg-white/[0.04] sm:p-10">
+                <span className="font-mono text-xs text-blue-300/70">
+                  02 / EXISTING SYSTEM
+                </span>
+
+                <h3 className="mt-7 text-3xl font-semibold tracking-[-0.045em] text-white">
+                  Improve what exists.
+                </h3>
+
+                <p className="mt-5 max-w-md flex-1 text-base leading-8 text-white/50">
+                  Have a website that isn't attracting customers, software
+                  that's difficult to use, or a process that's slowing your team
+                  down? Let's identify what can improve.
+                </p>
+
+                <Link
+                  href="/#contact"
+                  className="mt-9 inline-flex w-fit items-center gap-3 border-b border-white/20 pb-2 text-sm font-semibold text-white transition-colors hover:border-blue-400/50 hover:text-blue-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-400"
+                >
+                  Discuss improvements
+                  <ArrowUpRight
+                    aria-hidden="true"
+                    className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  />
+                </Link>
+              </div>
+            </div>
+
+            <p className="mt-10 text-center text-sm leading-7 text-white/40">
+              Not sure which direction fits? That's okay. We can figure it out
+              together.
+            </p>
           </div>
         </section>
       </main>

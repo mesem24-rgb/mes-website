@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { FounderSection } from "@/components/sections/FounderSection";
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -92,7 +93,8 @@ export default function AboutPage() {
               <ArrowLeft className="h-4 w-4" />
               Back home
             </Link>
-
+{/* FOUNDER INTRODUCTION */}
+        <FounderSection />
             <div className="mt-12 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-end lg:gap-20">
               <div>
                 <p className="mes-eyebrow">
@@ -124,6 +126,8 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
+
+        
 
         {/* ORIGIN */}
         <section className="mes-section relative overflow-hidden border-t border-white/[0.08] bg-[#252A30]/80">

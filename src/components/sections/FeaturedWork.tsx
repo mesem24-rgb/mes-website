@@ -365,7 +365,11 @@ function CompactProjectCard({
   );
 }
 
-export function FeaturedWork() {
+type FeaturedWorkProps = {
+  showIntro?: boolean;
+};
+
+export function FeaturedWork({ showIntro = true }: FeaturedWorkProps) {
   return (
     <section
       id="featured-work"
@@ -384,32 +388,39 @@ export function FeaturedWork() {
 
       <div className="mes-container relative">
         {/* SECTION: Intro */}
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(24rem,0.55fr)] lg:items-end lg:gap-20">
-          <div>
-            <p className="mes-eyebrow">
-              <span className="mes-accent-dot" />
-              Featured work
+        {showIntro && (
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(24rem,0.55fr)] lg:items-end lg:gap-20">
+            <div>
+              <p className="mes-eyebrow">
+                <span className="mes-accent-dot" />
+                Featured work
+              </p>
+
+              <h2
+                id="featured-work-heading"
+                className="mt-6 max-w-[10ch] text-[clamp(3.25rem,7vw,7rem)] font-semibold leading-[0.9] tracking-[-0.075em] text-white"
+              >
+                Different businesses.
+                <br />
+                Different solutions.
+              </h2>
+            </div>
+
+            <p className="max-w-lg text-base leading-8 text-white/45 lg:pb-3">
+              Every business works differently. These projects show how MES
+              turns different needs, workflows, and ideas into websites and
+              software built around the people who use them.
             </p>
-
-            <h2
-              id="featured-work-heading"
-              className="mt-6 max-w-[10ch] text-[clamp(3.25rem,7vw,7rem)] font-semibold leading-[0.9] tracking-[-0.075em] text-white"
-            >
-              Different businesses.
-              <br />
-              Different solutions.
-            </h2>
           </div>
-
-          <p className="max-w-lg text-base leading-8 text-white/45 lg:pb-3">
-            Every business works differently. These projects show how MES turns
-            different needs, workflows, and ideas into websites and software
-            built around the people who use them.
-          </p>
-        </div>
-
+        )}
         {/* SECTION: Flagship projects */}
-        <div className="mt-20 border-t border-white/[0.08] sm:mt-28">
+        <div
+          className={
+            showIntro
+              ? "mt-20 border-t border-white/[0.08] sm:mt-28"
+              : "border-t border-white/[0.08]"
+          }
+        >
           {flagshipProjects.map((project, index) => {
             const imageFirst = index % 2 === 0;
 
@@ -432,6 +443,7 @@ export function FeaturedWork() {
                   <Reveal
                     direction={imageFirst ? "left" : "right"}
                     distance={24}
+                    threshold={0.15}
                   >
                     <ProjectVisual project={project} />
                   </Reveal>
@@ -441,6 +453,7 @@ export function FeaturedWork() {
                   <Reveal
                     direction={imageFirst ? "right" : "left"}
                     distance={24}
+                    threshold={0.15}
                     delay={90}
                   >
                     <ProjectDetails project={project} index={index} />
