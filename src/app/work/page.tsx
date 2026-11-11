@@ -5,20 +5,28 @@ import { SiteFrame } from "@/components/layout/SiteFrame";
 import { FeaturedWork } from "@/components/sections/FeaturedWork";
 
 export const metadata: Metadata = {
-  title: "Selected Work",
+  title: "Our Work | Websites & Custom Business Software",
+
   description:
-    "Explore MES case studies including custom recruiting software, construction management software, and small-business website development.",
+    "Explore MES Solutions projects, including custom CRM systems, construction management software, business websites, and workflow applications built around real business needs.",
 
   alternates: {
     canonical: "/work",
   },
 
   openGraph: {
-    title: "Selected Work | MES",
+    title: "Our Work | MES Solutions",
     description:
-      "See how MES approaches different business problems through custom software, workflow platforms, and focused business websites.",
+      "Explore custom business software, CRM systems, workflow applications, and website projects developed by MES Solutions.",
     url: "/work",
     type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Our Work | MES Solutions",
+    description:
+      "See the websites, business applications, and custom software projects developed by MES Solutions.",
   },
 };
 

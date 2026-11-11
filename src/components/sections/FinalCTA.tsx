@@ -7,7 +7,7 @@ export function FinalCTA() {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="mes-section relative overflow-hidden"
+      className="mes-section relative scroll-mt-24 overflow-hidden"
     >
       <div
         aria-hidden="true"

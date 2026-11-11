@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type MouseEvent } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, Menu, Share2, X } from "lucide-react";
@@ -31,7 +31,7 @@ const navigationItems = [
 
 export function Navbar() {
   const pathname = usePathname();
-
+const menuButtonRef = useRef<HTMLButtonElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
@@ -112,6 +112,7 @@ export function Navbar() {
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setIsMenuOpen(false);
+        menuButtonRef.current?.focus();
       }
     };
 
@@ -276,14 +277,21 @@ export function Navbar() {
             className="hidden items-center gap-7 xl:flex"
           >
             {navigationItems.map((item) => {
-              const isActive =
-                item.sectionId !== "" && activeSection === item.sectionId;
-
+              const isActive = item.sectionId
+                ? pathname === "/" && activeSection === item.sectionId
+                : pathname === item.href ||
+                  pathname.startsWith(`${item.href}/`);
               return (
                 <Link
                   key={item.label}
                   href={item.href}
-                  aria-current={isActive ? "location" : undefined}
+                  aria-current={
+                    isActive
+                      ? item.sectionId
+                        ? "location"
+                        : "page"
+                      : undefined
+                  }
                   onClick={(event) =>
                     handleNavigation(event, item.href, item.sectionId)
                   }
@@ -327,6 +335,7 @@ export function Navbar() {
             </Link>
 
             <button
+              ref={menuButtonRef}
               type="button"
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMenuOpen}
@@ -347,6 +356,7 @@ export function Navbar() {
       {/* SECTION: Mobile navigation */}
       <div
         id="mobile-navigation"
+        inert={!isMenuOpen}
         className={[
           "fixed inset-0 z-40 overflow-y-auto bg-[#070b12] transition-all duration-500 xl:hidden",
           isMenuOpen
@@ -357,14 +367,21 @@ export function Navbar() {
         <div className="mes-container flex min-h-[100svh] flex-col pb-8 pt-28">
           <nav aria-label="Mobile navigation" className="flex flex-col">
             {navigationItems.map((item, index) => {
-              const isActive =
-                item.sectionId !== "" && activeSection === item.sectionId;
-
+              const isActive = item.sectionId
+                ? pathname === "/" && activeSection === item.sectionId
+                : pathname === item.href ||
+                  pathname.startsWith(`${item.href}/`);
               return (
                 <Link
                   key={item.label}
                   href={item.href}
-                  aria-current={isActive ? "location" : undefined}
+                  aria-current={
+                    isActive
+                      ? item.sectionId
+                        ? "location"
+                        : "page"
+                      : undefined
+                  }
                   onClick={(event) =>
                     handleNavigation(event, item.href, item.sectionId)
                   }

@@ -5,7 +5,7 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { SiteFrame } from "@/components/layout/SiteFrame";
 
 export const metadata: Metadata = {
-  title: "Custom Construction Management Software | ConstructFlow",
+  title: "ConstructFlow | Construction Management Software",
 
   description:
     "ConstructFlow is a custom construction management software platform designed by MES for project tracking, daily logs, RFIs, change orders, documents, tasks, and construction operations.",

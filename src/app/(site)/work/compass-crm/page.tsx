@@ -23,7 +23,7 @@ const technologies = [
 ];
 
 export const metadata: Metadata = {
-  title: "Custom Recruiting CRM Development | Compass CRM",
+  title: "Compass CRM | Custom Recruiting Software",
 
   description:
     "Compass CRM is a custom recruiting software platform designed by MES for candidate management, job orders, recruiter ownership, client management, candidate search, and recruiting pipeline workflows.",

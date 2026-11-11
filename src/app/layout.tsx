@@ -10,15 +10,23 @@ import "./globals.css";
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "MES",
+  "@id": "https://www.mes-solutions.dev/#organization",
+
+  name: "MES Solutions",
   alternateName: "Meaningful Empowering Solutions",
+
   url: "https://www.mes-solutions.dev",
   email: "michael@mes-solutions.dev",
+
+  logo: "https://www.mes-solutions.dev/images/og-image.png",
 
   founder: {
     "@type": "Person",
     name: "Michael Sullivan",
   },
+
+  description:
+    "MES Solutions is a Gulfport, Mississippi software development business providing custom websites, website optimization, SEO, AI search visibility, workflow automation, and business software solutions.",
 
   areaServed: [
     {
@@ -29,16 +37,22 @@ const organizationSchema = {
       "@type": "AdministrativeArea",
       name: "Mississippi Gulf Coast",
     },
+    {
+      "@type": "Country",
+      name: "United States",
+    },
   ],
 
-  description:
-    "MES builds custom websites, workflow applications, and practical software solutions for businesses.",
-
   knowsAbout: [
-    "Custom website development",
-    "Workflow applications",
+    "Business website development",
+    "Website performance optimization",
+    "Technical search engine optimization",
+    "AI search optimization",
+    "Custom software development",
+    "CRM development",
+    "Workflow automation",
     "Business process improvement",
-    "Internal business tools",
+    "Internal business applications",
     "Software consulting",
   ],
 };
@@ -74,10 +88,6 @@ export const metadata: Metadata = {
     "Gulfport Mississippi web developer",
     "Mississippi Gulf Coast web design",
   ],
-
-  alternates: {
-    canonical: "/",
-  },
 
   openGraph: {
     type: "website",

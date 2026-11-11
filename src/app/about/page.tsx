@@ -12,28 +12,28 @@ import {
 import { SiteFrame } from "@/components/layout/SiteFrame";
 
 export const metadata: Metadata = {
-  title: "About MES | Software Development in Gulfport, MS",
+  title: "About MES Solutions | Gulfport Software Developer",
 
   description:
-    "MES is a Gulfport, Mississippi software development business combining modern web development with more than 20 years of leadership and operations experience to build practical software around real business needs.",
+    "Meet Michael Sullivan, founder of MES Solutions in Gulfport, MS. Combining 20+ years of business leadership with modern web development to build websites and software that work for your business.",
 
   alternates: {
     canonical: "/about",
   },
 
   openGraph: {
-    title: "About MES | Software Development in Gulfport, MS",
+    title: "About MES Solutions | Business Experience Meets Technology",
     description:
-      "Learn how MES combines business experience, thoughtful software development, and a collaborative approach to build solutions around the way businesses actually work.",
+      "Meet the founder of MES Solutions and discover how real-world business experience shapes practical websites, custom software, and workflow solutions.",
     url: "/about",
     type: "website",
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "About MES | Software Development in Gulfport, MS",
+    title: "About MES Solutions",
     description:
-      "Business experience and thoughtful software development brought together to solve real operational problems.",
+      "Business experience meets modern software development. Learn about the person and philosophy behind MES Solutions.",
   },
 };
 

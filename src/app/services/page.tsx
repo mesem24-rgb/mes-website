@@ -17,28 +17,28 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Custom Software & Website Development | Gulfport, MS",
+  title: "Web Development, SEO & Custom Software | Gulfport, MS",
 
   description:
-    "MES provides custom software development, business websites, workflow automation, CRM systems, and internal business tools for small and growing businesses in Gulfport and across the Mississippi Gulf Coast.",
+    "MES Solutions builds and optimizes business websites, improves SEO and AI search visibility, and develops custom software for businesses in Gulfport, the Mississippi Gulf Coast, and beyond.",
 
   alternates: {
     canonical: "/services",
   },
 
   openGraph: {
-    title: "Custom Software & Website Development | MES",
+    title: "Web Development, SEO & Custom Software | MES Solutions",
     description:
-      "Custom websites, business applications, workflow automation, CRM systems, and internal tools built around the way your business works.",
+      "Business websites, SEO and AI search optimization, custom software, and workflow solutions built around your business.",
     url: "/services",
     type: "website",
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Custom Software & Website Development | MES",
+    title: "Web Development, SEO & Custom Software | MES Solutions",
     description:
-      "Custom websites and business software built around real business workflows.",
+      "Website development, search optimization, and custom business software designed to help businesses grow.",
   },
 };
 
@@ -167,7 +167,10 @@ const process = [
 const servicesSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "MES Software Development Services",
+  "@id": "https://www.mes-solutions.dev/services#service",
+
+  name: "MES Solutions | Website & Software Development Services",
+
   serviceType: [
     "Business Website Development",
     "Website Optimization",
@@ -178,11 +181,14 @@ const servicesSchema = {
     "Workflow Automation",
     "Software Planning and Consulting",
   ],
+
   provider: {
     "@type": "Organization",
-    name: "MES",
+    "@id": "https://www.mes-solutions.dev/#organization",
+    name: "MES Solutions",
     url: "https://www.mes-solutions.dev",
   },
+
   areaServed: [
     {
       "@type": "City",
@@ -192,9 +198,15 @@ const servicesSchema = {
       "@type": "AdministrativeArea",
       name: "Mississippi Gulf Coast",
     },
+    {
+      "@type": "Country",
+      name: "United States",
+    },
   ],
+
   description:
-    "MES provides custom software development, business websites, workflow automation, CRM systems, internal tools, and software consulting for small and growing businesses.",
+    "MES Solutions provides business website development, website optimization, technical SEO, AI search visibility improvements, custom software, CRM systems, workflow automation, and business technology consulting.",
+
   url: "https://www.mes-solutions.dev/services",
 };
 

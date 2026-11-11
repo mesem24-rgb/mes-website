@@ -22,7 +22,7 @@ const technologies = [
 ];
 
 export const metadata: Metadata = {
-  title: "Small Business Website Design | Elite Ball Co.",
+  title: "Elite Ball Co. | Small Business Website Design",
 
   description:
     "See how MES designed and developed a responsive small-business website for Elite Ball Co. focused on brand credibility, product presentation, clear pricing, mobile usability, and customer conversion.",
